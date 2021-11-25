@@ -9,7 +9,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
     <link rel="manifest" href="assets/site.webmanifest">
-    <link rel="stylesheet" href="style.css/style.css">
+    <link rel="stylesheet" href="style/style.css">
     <title>StudyHub - Connect with Tutors</title>
 
     <!-- Bootstrap CSS -->
@@ -17,7 +17,8 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light formatting">
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-light formatting fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
                 <img src="./assets/logo-wide.png" width="180" height="40" class="d-inline-block align-top" alt="">
@@ -48,13 +49,67 @@
     </nav>
 
 
-    <div class="container ">
-        <div class="row ">
-            <div class="col ">
-
+       <!-- BANNER -->
+       <section id="banner">
+          <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
             </div>
-        </div>
-    </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                 <img style="width: 100%;" src="assets/banner.jpg" alt="">
+                <div class="centered">
+                    <h1 class="banner-text">New to our website? <br><a class="btn learn-more">Click here to learn more</a></h1>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img style="width: 100%;" src="assets/banner1.jpg" alt="">
+                <div class="centered">
+                    <h1 class="banner-text">Need help? Check out our support service. <br><a class="btn learn-more">Click here to learn more</a></h1>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img style="width: 100%;" src="assets/banner2.jpg" alt="">
+                <div class="centered">
+                    <h1 class="banner-text">Struggling in class? Find a tutor for you. <br><a class="btn learn-more">Click here to learn more</a></h1>
+                </div>
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+        
+    </section>
+    <!-- INTRODUCTION -->
+  <section id="featured">
+        <h2 class="subheader">Featured lessons this week:</h2>
+      <div class="d-flex flex-row flex-nowrap horizontal-scroll">
+          <div class="card card-body">
+            <img class="card-image" src="assets/card1.jpg" alt="">
+          </div>
+          <div class="card card-body">Card</div>
+          <div class="card card-body">Card</div>
+          <div class="card card-body">Card</div>
+          <div class="card card-body">Card</div>
+          <div class="card card-body">Card</div>
+          <div class="card card-body">Card</div>
+          <div class="card card-body">Card</div>
+          <div class="card card-body">Card</div>
+          <div class="card card-body">Card</div>
+          <div class="card card-body">Card</div>
+          <div class="card card-body">Card</div>
+          <div class="card card-body">Card</div>
+          <div class="card card-body">Card</div>
+      </div>
+  </section>
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->

@@ -19,7 +19,9 @@ button {
     border: 0 none;
     outline: 0 none;
 }
-
+.navbar{
+    box-shadow: 0 0 10px #BDBDBD;
+}
 .navItem:hover {
     border-bottom: 2px solid #000000;
 }
@@ -59,4 +61,65 @@ button {
 
 .textIconFind {
     font-size: 30px;
+}
+.horizontal-scroll{
+    overflow-x: scroll;
+}
+.subheader{
+    color: #FF385C !important;
+    font-weight: 1000;
+    padding: 1vh;
+}
+.learn-more{
+    color: #FF385C !important;
+    font-weight: bold !important;
+    border-radius: 10px;
+    text-decoration: underline !important;
+}
+.learn-more:hover{
+    background-color: #FF385C;
+    color: white !important;
+    text-decoration: none !important;
+}
+
+.centered {
+    position: absolute;
+    top: 50vh;
+    left: 50vw;
+    transform: translate(-50%, -50%);
+  }
+  .banner-text{
+    background-color: white;
+    padding: 5% 2%;
+    border-radius:50px;
+    margin: 0;
+    text-align: center;
+    font-size: 3.5rem;
+    font-weight: 1000;
+    color: #FF385C;
+}
+.card-body {
+    min-height: 300px !important;
+    min-width: 300px !important;
+    margin-right: 5px !important;
+}
+#banner{
+    overflow: hidden;
+    height: 100vh;
+    width: 99vw;
+    box-shadow: 0 0 10px #979797;
+}
+
+#featured{
+    padding-top: 5vh;
+}
+
+.card-image{
+    height: 100%;
+    overflow: hidden;
+}
+.card-body{
+    padding: 0 !important;
+    border-radius: 0.5vw !important;
+    overflow: hidden;
 }
