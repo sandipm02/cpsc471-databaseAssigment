@@ -72,12 +72,10 @@ button {
 }
 .learn-more{
     color: #FF385C !important;
-    font-weight: bold !important;
     border-radius: 10px;
-    text-decoration: underline !important;
 }
 .learn-more:hover{
-    background-color: #FF385C;
+    background-color: #FF385C !important;
     color: white !important;
     text-decoration: none !important;
 }
@@ -121,5 +119,19 @@ button {
 .card-body{
     padding: 0 !important;
     border-radius: 0.5vw !important;
-    overflow: hidden;
+    overflow: hidden;color:transparent;
+}
+.card-body:hover{
+    -webkit-filter: brightness(60%);
+    transition: all 0.2s ease;
+    color: white !important;
+}
+
+.card-title{
+    position: absolute;
+    padding-top: 5%;
+    padding-left: 5%;
+    
+    font-size: large;
+    padding-right: 30%;
 }
