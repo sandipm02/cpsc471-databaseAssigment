@@ -134,4 +134,5 @@ button {
     
     font-size: large;
     padding-right: 30%;
+    z-index: 10 !important;
 }
