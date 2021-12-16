@@ -156,7 +156,7 @@ CREATE TABLE `user` (
   `Pword` varchar(255) NOT NULL,
   `Fname` varchar(255) NOT NULL,
   `LName` varchar(255) NOT NULL,
-  'Type'  varchar(255) NOT NULL,
+  `Type`  varchar(255) NOT NULL,
   `Language` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`Username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -168,7 +168,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES ('user1','user1@gmail.com','password','User','One','English');
+INSERT INTO `user` VALUES ('user1','user1@gmail.com','password','User','One', 'tutor','English');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
