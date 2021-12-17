@@ -1,3 +1,5 @@
+
+
 function testing() {
     var resultElement = document.getElementById('getResult1');
     resultElement.innerHTML = '';
@@ -24,3 +26,22 @@ function generateSuccessHTMLOutput(response) {
             '<pre>' + response.data[0].Username + '</pre>';
 
   }
+
+
+
+  function verifyLogin(username, password) {
+
+    const queryString = '/?username=' + username + '&password=' + password;
+    axios.get('http://localhost:3000/checkLogin' + queryString)
+    .then(function(response){
+    
+      console.log(response)
+
+  })
+  .catch(function(err){
+    console.log("NOT WORKINGBRUH");
+
+  });
+  
+    
+}
