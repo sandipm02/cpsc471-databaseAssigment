@@ -38,7 +38,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class=" nav-item ">
-                      <button type="button" class="buttonSearch" data-bs-toggle="modal" data-bs-target="#searchModal">Search <span class="textIconFind">&#0020&#8981</span></button>
+                      <button type="button" class="buttonSearch" data-bs-toggle="modal" data-bs-target="#searchModal" onclick="populateLocationList()">Search <span class="textIconFind">&#0020&#8981</span></button>
                     </li>
                 </ul>
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0 ">
@@ -257,11 +257,7 @@
           <div class="col-sm">
             <h4>Location</h4>
             <select id="locationList" class="form-select">
-              <option selected>Any Qualification</option>
-              <option >High School Diploma</option>
-              <option >Bachelors Degree </option>
-              <option >Master Degree</option>
-              <option >PhD</option>
+              <option selected>Any Location</option>
             </select>
           </div>
           <div class="col-sm">
