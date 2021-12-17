@@ -16,6 +16,32 @@ router.get('/', (req, res)=>{
 });
 
 
+router.post('/', function(req, res) {
+
+    console.log(req)
+    console.log(req.body)
+    let user = req.body;
+ 
+    console.log(user.Username)
+
+
+
+    connection.query("INSERT INTO studyhubdb.user VALUES (?, ?, ?, ?, ?, ?)", [user.Username, user.Email, user.Pword, user.Fname, user.Lname, user.Type], function(err, result, fields) {
+
+
+        if (!err) {
+            res.send(result);
+            } else {
+            console.log(err)
+            }
+
+    })
+
+
+ 
+ })
+
+
 
 
 

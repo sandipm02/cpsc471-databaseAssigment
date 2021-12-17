@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-var path = require('path');
 
 
 const cors = require("cors");
@@ -12,9 +11,7 @@ const corsOptions ={
 }
 
 app.use(cors(corsOptions)) // Use this after the variable declaration
-app.use(bodyParser.urlencoded({extended : true}));
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname,'./client')));
 
 
 const userRoutes = require('./RESTAPI/user');
@@ -23,8 +20,7 @@ const locationRoutes = require('./RESTAPI/location');
 const studentRoutes = require('./RESTAPI/student');
 const qualificationRoutes = require('./RESTAPI/qualification');
 const timeslotRoutes = require('./RESTAPI/timeslot');
-const connection = require('./connection');
-const e = require('express');
+const helperRoutes = require('./RESTAPI/helper');
 
 app.use('/user', userRoutes);
 app.use('/tutor', tutorRoutes);
@@ -32,23 +28,9 @@ app.use('/location', locationRoutes);
 app.use('/student', studentRoutes);
 app.use('/qualification', qualificationRoutes);
 app.use('/timeslot', timeslotRoutes);
+app.use('/helper', helperRoutes);
 
 
 
-
-app.get('/checkLogin', function(req, res) {
-
-   var username = req.query.username;
-   var password = req.query.password;
-
-   connection.query('SELECT * FROM studyhubdb.user WHERE (Username = ? AND Pword = ?)', [username, password], function(err, result, fields) {
-      if (!err) {
-         res.send(result);
-      } else {
-         console.log(err)
-      }
-   })
-
-})
 
 module.exports = app;
