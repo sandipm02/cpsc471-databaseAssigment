@@ -5,8 +5,8 @@ body{
 
 #page{
     
-    margin:20vh 30vw;
-    height: 60vh;
+    margin:20vh 20vw;
+    height: 65vh;
     background-color: white;
     border-radius: 3px;
     box-shadow: -1px 1px 4px 4px rgba(0,0,0,0.05);
@@ -37,4 +37,12 @@ body{
 #wrongInput{
     color:red;
     padding-left: 5vw;
+}
+#page .user{
+
+    padding: 0vh 5vw;
+    padding-top: -5vh;
+}
+#page .row{
+    padding: 1vh 1vw;
 }

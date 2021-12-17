@@ -136,3 +136,6 @@ button {
     padding-right: 30%;
     z-index: 10 !important;
 }
+.btn:focus{
+    outline: none !important;
+}

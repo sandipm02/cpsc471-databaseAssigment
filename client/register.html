@@ -10,7 +10,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
     <link rel="manifest" href="assets/site.webmanifest">
     <link rel="stylesheet" href="style/style.css">
-    <link rel="stylesheet" href="style/login.css">
+    <link rel="stylesheet" href="style/register.css">
     <title>StudyHub - Connect with Tutors</title>
 
     <!-- Bootstrap CSS -->
@@ -47,7 +47,7 @@
                         <a class="nav-link navItem " href="# ">Learn More</a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link navItem " href="login.html">Sign In</a>
+                        <a class="nav-link navItem " href="register.html">Sign Up</a>
                     </li>
 
                 </ul>
@@ -58,29 +58,53 @@
     <section id="page"> 
         <iframe name="dummyframe" id="dummyframe" style="display: none;"></iframe>
         <form class="user" target="dummyframe">
-            <div class="form-group">
-                <h1>Sign In</h1>
+            <div class="row">
+                <div class="col-sm">
+                    <h4>First Name</h4>
+                    <input id="firstName" class="form-control form-control-user" placeholder="Enter your first name">
+                </div>
+                <div class="col-sm">
+                    <h4>Last Name</h4>
+                    <input  id="lastName" class="form-control form-control-user" placeholder="Enter your last name">
+                </div>
             </div>
-            <div class="form-group">
-              <input name="username" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Username...">
+            <div class="row">
+                <div class="col-sm">
+                    <h4>Username</h4>
+                    <input id="username" class="form-control form-control-user" placeholder="Enter your username">
+                </div>
+                <div class="col-sm">
+                    <h4>Email</h4>
+                    <input id="email" name="email" class="form-control form-control-user" placeholder="Enter your email">
+                </div>
             </div>
-            <div class="form-group">
-              <input type="password" name="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
+            <div class="row">
+                <div class="col-sm">
+                    <h4>Password</h4>
+                    <input type="password" id="password" class="form-control form-control-user" placeholder="Enter your password">
+                </div>
+                <div class="col-sm">
+                    <h4>Type</h4>
+                    <select id="type" class="form-control">
+                        <option selected>Select...</option>
+                        <option>Student</option>
+                        <option>Tutor</option>
+                    </select>
+
+                </div>
             </div>
-            <div id="wrongInput"><br></div>
+
             <div class="form-group">
-                <button class="btn btn-login btn-user btn-block" onclick="verifyLogin(document.getElementById('exampleInputEmail').value, document.getElementById('exampleInputPassword').value)">
-                Login
+                <br><br>
+                <button class="btn btn-login btn-user btn-block" onclick="verifyRegistration(document.getElementById('firstName').value, document.getElementById('lastName').value, document.getElementById('username').value, document.getElementById('email').value, document.getElementById('password').value, document.getElementById('type').value)">
+                Register
                 </button>
                 </div>
             </form>
             <div class="form-group">
                 <br>
-                <p>Not a member?<b><a class="btn" href="register.html">Sign up now!</a></b> </p>
+                <p>Already haven an account?<b><a class="btn" href="login.html">Login Here!</a></b> </p>
             </div>
           
     </section>
-    <form>
-
-    </form>
 </body>
