@@ -1,0 +1,36 @@
+body{
+    background-color: #F7F7F7 !important;
+}
+
+
+#page{
+    
+    margin:20vh 30vw;
+    height: 60vh;
+    background-color: white;
+    border-radius: 3px;
+    box-shadow: -1px 1px 4px 4px rgba(0,0,0,0.05);
+    padding: 10vh 1vw;
+}
+#page .form-group{
+    padding: 1vh 5vw;
+    text-align:center;
+}
+#page a{
+    color: #ff385c !important;
+    font-weight: 500 !important;
+}
+#page a:hover{
+    color: #ff5f7c !important;
+}
+
+#page .btn-login {
+    background-color: #ff385c !important;
+    outline-color: #ff385c !important;
+    outline: none !important; 
+    color: white !important;
+
+}
+#page .btn-login:hover{
+    background-color: #ff5f7c !important;
+}
