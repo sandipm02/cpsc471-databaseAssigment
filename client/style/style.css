@@ -36,11 +36,11 @@ button {
 
 .buttonSearch {
     align-items: center;
-    background-color: #FF385C;
+    background-color: #FF385C !important;
     border: 1;
     border-color: #FF385C;
     border-radius: 100px;
-    color: white;
+    color: white !important;
     display: inline-flex;
     font-weight: 600;
     justify-content: center;
@@ -55,8 +55,8 @@ button {
 }
 
 .buttonSearch:hover {
-    background-color: rgb(243, 243, 243);
-    color: #FF385C;
+    background-color: rgb(243, 243, 243) !important; 
+    color: #FF385C !important;
 }
 
 .textIconFind {
@@ -138,4 +138,15 @@ button {
 }
 .btn:focus{
     outline: none !important;
+}
+
+
+.searchbar{
+    padding: 1vh 5vw;
+}
+.btn-search{
+    background-color: #FF385C;
+}
+.btn-secondary{
+    border-radius: 10px;
 }
