@@ -238,6 +238,23 @@
       </div>
       <form class="modal-body">
         <div class="row">
+          <h4>Subject</h4>
+          <div class="col-sm">
+          <select id="subjectList" class="form-select">
+            <option>Any Subject</option>
+            <option >Mathematics</option>
+            <option >Physics</option>
+            <option >Chemistry</option>
+            <option >Biology</option>
+            <option >Computer Science</option>
+            <option >Language Arts</option>
+            <option >Business</option>
+            <option >Social Studies</option>
+            <option >Foreign Language</option>
+            <option >Culinary Arts</option>
+          </select></div>
+        </div>
+        <div class="row">
           <div class="col-sm">
             <h4>Accreditation</h4>
             <select id="accreditationList" class="form-select">
@@ -275,7 +292,7 @@
     </form>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button class="btn buttonSearch btn-user btn-block" onclick="search(document.getElementById('accreditationList').value, document.getElementById('dateList').value, document.getElementById('locationList').value, document.getElementById('ratingLIst').value)">
+        <button class="btn buttonSearch btn-user btn-block" onclick="search(document.getElementById('subjectList').value, document.getElementById('accreditationList').value, document.getElementById('dateList').value, document.getElementById('locationList').value, document.getElementById('ratingLIst').value)">
           Search
         </button>
       </div>
