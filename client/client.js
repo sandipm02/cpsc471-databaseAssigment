@@ -30,16 +30,23 @@ function generateSuccessHTMLOutput(response) {
 
 
   function verifyLogin(username, password) {
+    var loc = window.location.pathname;
+    var dir = loc.substring(0, loc.lastIndexOf('/'));
 
     const queryString = '/?username=' + username + '&password=' + password;
     axios.get('http://localhost:3000/checkLogin' + queryString)
     .then(function(response){
-    
-      console.log(response)
+
+      if (response.data.length > 0) {
+        console.log("Valid Login")
+        window.location = dir + "/index.html";
+      } else {
+        console.log("Invalid Login")
+      }
 
   })
   .catch(function(err){
-    console.log("NOT WORKINGBRUH");
+    console.log(err);
 
   });
   

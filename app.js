@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const path = require('path');
+var path = require('path');
 
 
 const cors = require("cors");
@@ -33,23 +33,18 @@ app.use('/student', studentRoutes);
 app.use('/qualification', qualificationRoutes);
 app.use('/timeslot', timeslotRoutes);
 
+
+
+
 app.get('/checkLogin', function(req, res) {
 
    var username = req.query.username;
    var password = req.query.password;
 
-
-   
-   var indexPage = 'client/index.html';
-
    connection.query('SELECT * FROM studyhubdb.user WHERE (Username = ? AND Pword = ?)', [username, password], function(err, result, fields) {
-      console.log(password)
-      console.log(username)
-      if (result.length > 0) {
-         console.log("Valid Account")
-         
+      if (!err) {
+         res.send(result);
       } else {
-         console.log("Invalid Account")
          console.log(err)
       }
    })
