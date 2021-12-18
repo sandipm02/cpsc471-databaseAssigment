@@ -107,6 +107,8 @@ router.post('/', function(req, res) {
         if (!err) {
 
             file.Username = user.Username;
+            file.LoggedIn = true;
+            file.AccType = user.Type;
             fs.writeFile('./client/localdata.json', JSON.stringify(file), function writeJSON(err) {
                 if (err) return console.log(err);
                 console.log(JSON.stringify(file));

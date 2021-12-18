@@ -3,6 +3,7 @@ const bodyparser = require('body-parser');
 const connection = require('../connection')
 var SqlString = require('sqlstring');
 const fs = require('fs');
+const file = require('../client/localdata.json');
 
 const router = express.Router();
 
@@ -17,6 +18,13 @@ router.get('/checkLogin', function(req, res) {
     connection.query('SELECT * FROM studyhubdb.user WHERE (Username = ? AND Pword = ?)', [username, password], function(err, result, fields) {
        if (!err) {
 
+         file.Username = username;
+         file.LoggedIn = true;
+         file.AccType = result[0].Usertype;
+         fs.writeFile('./client/localdata.json', JSON.stringify(file), function writeJSON(err) {
+               if (err) return console.log(err);
+               console.log(JSON.stringify(file));
+            });
 
          res.send(result);
        } else {
@@ -40,21 +48,6 @@ router.get('/checkLogin', function(req, res) {
 })
 
 
-router.get('/checkLogin', function(req, res) {
-
-   
-
-   connection.query('SELECT * FROM studyhubdb.user WHERE (Username = ? AND Pword = ?)', [username, password], function(err, result, fields) {
-      if (!err) {
-
-
-        res.send(result);
-      } else {
-         console.log(err)
-      }
-   })
-
-})
 
 
 
