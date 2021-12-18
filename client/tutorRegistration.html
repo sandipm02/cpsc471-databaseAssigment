@@ -27,21 +27,21 @@
      <!-- NAVBAR -->
      <nav class="navbar navbar-expand-lg navbar-light formatting fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">
-                <img src="./assets/logo-wide.png" width="180" height="40" class="d-inline-block align-top" alt="" >
+            <a class="navbar-brand" href="#">
+                <img src="./assets/logo-wide.png" width="180" height="40" class="d-inline-block align-top" alt="">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class=" nav-item">
-                      <button type="button" class="buttonSearch" data-bs-toggle="modal" data-bs-target="#searchModal" onclick="populateLocationList()">Search <span class="textIconFind">&#0020&#8981</span></button>
+                    <li class=" nav-item ">
+                      <a href="results.html" class="buttonSearch" >Search </a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0 ">
                     <li class="nav-item ">
-                        <a class="nav-link navItemActive " href="index.html">Home</a>
+                        <a class="nav-link navItemActive " href="# ">Home</a>
                     </li>
                     <li class="nav-item ">
                         <a class="nav-link navItem " href="# ">Learn More</a>
@@ -54,77 +54,6 @@
             </div>
         </div>
     </nav>
-    <!-- Modal -->
-<div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Select your search criteria:</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <form class="modal-body">
-        <div class="row">
-          <h4>Subject</h4>
-          <div class="col-sm">
-          <select id="subjectList" class="form-select">
-            <option>Any Subject</option>
-            <option >Mathematics</option>
-            <option >Physics</option>
-            <option >Chemistry</option>
-            <option >Biology</option>
-            <option >Computer Science</option>
-            <option >Language Arts</option>
-            <option >Business</option>
-            <option >Social Studies</option>
-            <option >Foreign Language</option>
-            <option >Culinary Arts</option>
-          </select></div>
-        </div>
-        <div class="row">
-          <div class="col-sm">
-            <h4>Accreditation</h4>
-            <select id="accreditationList" class="form-select">
-              <option selected>Any Qualifications</option>
-              <option >Diploma</option>
-              <option >Bachelors Degree </option>
-              <option >Master Degree</option>
-              <option >Ph.D</option>
-            </select>
-          </div>
-          <div class="col-sm">
-              <h4>Date</h4>
-              <input type="date" id="dateList">
-          </div>
-      </div>
-        <div class="row">
-          <div class="col-sm">
-            <h4>Location</h4>
-            <select id="locationList" class="form-select">
-              <option selected>Any Location</option>
-            </select>
-          </div>
-          <div class="col-sm">
-              <h4>Rating</h4>
-              <select id="ratingList" class="form-select">
-                <option selected>Any Rating</option>
-                <option >+1.0 Star </option>
-                <option >+2.0 Star </option>
-                <option >+3.0 Star </option>
-                <option >+4.0 Star </option>
-                <option >+4.5 Star </option>
-              </select>
-          </div>
-      </div>
-    </form>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button class="btn buttonSearch btn-user btn-block" onclick="search(document.getElementById('subjectList').value, document.getElementById('accreditationList').value, document.getElementById('dateList').value, document.getElementById('locationList').value, document.getElementById('ratingLIst').value)">
-          Search
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
     
     <section id="page"> 
     <div class="form-group">

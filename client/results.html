@@ -18,11 +18,9 @@
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="client.js"></script>
-
-
-
 </head>
-<body>
+
+<body onLoad = "openModal()"> 
        <!-- NAVBAR -->
        <nav class="navbar navbar-expand-lg navbar-light formatting fixed-top">
         <div class="container-fluid">
@@ -35,7 +33,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class=" nav-item">
-                      <button type="button" class="buttonSearch" data-bs-toggle="modal" data-bs-target="#searchModal" onclick="populateLocationList()">Search <span class="textIconFind">&#0020&#8981</span></button>
+                      <button type="button" class="buttonSearch" data-bs-toggle="modal" data-bs-target="#searchModal" onclick="populateLocationList()">Search </button>
                     </li>
                 </ul>
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0 ">
@@ -54,7 +52,7 @@
         </div>
     </nav>
     <!-- Modal -->
-<div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade in" id="searchModal" >
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
@@ -117,7 +115,7 @@
     </form>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button class="btn buttonSearch btn-user btn-block" onclick="search()">
+        <button class="btn buttonSearch btn-user btn-block" onclick="search()" data-bs-dismiss="modal">
           Search
         </button>
       </div>

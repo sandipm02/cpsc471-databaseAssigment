@@ -1,3 +1,4 @@
+
 function testing() {
     var resultElement = document.getElementById('getResult1');
     resultElement.innerHTML = '';
@@ -284,5 +285,8 @@ function generateResultsHTMLOutput(response) {
 
 }
 
-
+function openModal(){
+  var myModal = new bootstrap.Modal(document.getElementById('searchModal'), {})
+myModal.toggle()
+}
 //document.getElementById('subjectList').value, document.getElementById('accreditationList').value, document.getElementById('locationList').value, document.getElementById('ratingLIst').value
