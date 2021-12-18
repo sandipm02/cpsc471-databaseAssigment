@@ -71,6 +71,10 @@ function verifyLogin(username, password) {
 
 
 function approveTime(Sessionid) {
+
+  var loc = window.location.pathname;
+  var dir = loc.substring(0, loc.lastIndexOf('/'));
+
   var data = JSON.stringify({
     "Sessionid": Sessionid
   });
@@ -87,6 +91,7 @@ function approveTime(Sessionid) {
   axios(config)
   .then(function (response) {
     console.log(JSON.stringify(response.data));
+    window.location = dir + "/tutorMain.html";
   })
   .catch(function (error) {
     console.log(error);
