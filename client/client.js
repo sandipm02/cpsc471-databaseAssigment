@@ -319,11 +319,14 @@ function generateHTMLLocations(location) {
   return '<option>'+location+'</option>';
 }
 
+function anySearch(){
+  search('Any Subject','Any Qualifications','Any Location','Any Rating');
+}
 
 function search(subject, accreditation, location, rating) {
 
-  var locElement = document.getElementById('locationList');
-  locElement.innerHTML = '<option selected>Any Location</option>';
+  // var locElement = document.getElementById('locationList');
+  // locElement.innerHTML = '<option selected>Any Location</option>';
   
 
   const queryString = '/?subject=' + subject + '&accreditation=' + accreditation + '&location=' + location + '&rating=' + rating;
@@ -457,7 +460,7 @@ function getTutorMain() {
   
 
     resultElement = document.getElementById('tutorImages');
-    resultElement.innerHTML = '<img class="image" src="assets/card' + Math.floor(Math.random() * 8) + '.jpg">';
+    resultElement.innerHTML = '<img class="image" src="assets/card' + Math.floor(Math.random() * 10) + '.jpg">';
 
     resultElement = document.getElementById('tutorSubjects');
     var subjectArr = [];

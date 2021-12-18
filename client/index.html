@@ -10,6 +10,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
     <link rel="manifest" href="assets/site.webmanifest">
     <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/results.css">
     <title>StudyHub - Connect with Tutors</title>
 
     <!-- Bootstrap CSS -->
@@ -25,7 +26,7 @@
 
 </head>
 
-<body onLoad = "testing()">
+<body onLoad = "anySearch()">
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-light formatting fixed-top">
         <div class="container-fluid">
@@ -65,19 +66,19 @@
               <div class="carousel-item active">
                  <img style="width: 100%;" src="assets/banner.jpg" alt="">
                 <div class="centered">
-                    <h1 class="banner-text">New to our website? <br><a class="btn learn-more">Click <b>here</b> to learn more</a></h1>
+                    <h1 class="banner-text">New to our website? </h1>
                 </div>
               </div>
               <div class="carousel-item">
                 <img style="width: 100%;" src="assets/banner1.jpg" alt="">
                 <div class="centered">
-                    <h1 class="banner-text">Need help? Check out our support service. <br><a class="btn learn-more">Click <b>here</b> to learn more</a></h1>
+                    <h1 class="banner-text">Need help? Check out our support service. </h1>
                 </div>
               </div>
               <div class="carousel-item">
                 <img style="width: 100%;" src="assets/banner2.jpg" alt="">
                 <div class="centered">
-                    <h1 class="banner-text">Struggling in class? Find a tutor for you. <br><a class="btn learn-more">Click <b>here</b> to learn more</a></h1>
+                    <h1 class="banner-text">Struggling in class? Find a tutor for you.</h1>
                 </div>
               </div>
             </div>
@@ -94,118 +95,9 @@
     </section>
     <!-- INTRODUCTION -->
   <section id="featured">
-        <h2 class="subheader">Featured lessons this week:</h2>
-      <div class="d-flex flex-row flex-nowrap horizontal-scroll">
-          <div class="card card-body">
-            <img class="card-image" src="assets/card1.jpg" alt="">
-            <h4 class="card-title">Introduction to computer science</h4>
-          </div>
-          <div class="card card-body">
-            <img class="card-image" src="assets/card2.jpg" alt="">
-          </div>
-          <div class="card card-body">
-            <img class="card-image" src="assets/card3.jpg" alt="">
-          </div>
-          <div class="card card-body">
-            <img class="card-image" src="assets/card4.jpg" alt="">
-          </div>
-          <div class="card card-body">
-            <img class="card-image" src="assets/card5.jpg" alt="">
-          </div>
-          <div class="card card-body">
-            <img class="card-image" src="assets/card6.jpg" alt="">
-          </div>
-          <div class="card card-body">
-            <img class="card-image" src="assets/card7.jpg" alt="">
-          </div>
-          <div class="card card-body">
-            <img class="card-image" src="assets/card8.jpg" alt="">
-          </div>
-          <div class="card card-body">
-            <img class="card-image" src="assets/card9.jpg" alt="">
-          </div>
-          <div class="card card-body">Card</div>
-          <div class="card card-body">Card</div>
-          <div class="card card-body">Card</div>
-          <div class="card card-body">Card</div>
-          <div class="card card-body">Card</div>
-      </div>
-  </section>
-  <section id="featured">
-    <h2 class="subheader">Featured lessons this week:</h2>
-  <div class="d-flex flex-row flex-nowrap horizontal-scroll">
-      <div class="card card-body">
-        <img class="card-image" src="assets/card1.jpg" alt="">
-        <h4 class="card-title">Introduction to computer science</h4>
-      </div>
-      <div class="card card-body">
-        <img class="card-image" src="assets/card2.jpg" alt="">
-      </div>
-      <div class="card card-body">
-        <img class="card-image" src="assets/card3.jpg" alt="">
-      </div>
-      <div class="card card-body">
-        <img class="card-image" src="assets/card4.jpg" alt="">
-      </div>
-      <div class="card card-body">
-        <img class="card-image" src="assets/card5.jpg" alt="">
-      </div>
-      <div class="card card-body">
-        <img class="card-image" src="assets/card6.jpg" alt="">
-      </div>
-      <div class="card card-body">
-        <img class="card-image" src="assets/card7.jpg" alt="">
-      </div>
-      <div class="card card-body">
-        <img class="card-image" src="assets/card8.jpg" alt="">
-      </div>
-      <div class="card card-body">
-        <img class="card-image" src="assets/card9.jpg" alt="">
-      </div>
-      <div class="card card-body">Card</div>
-      <div class="card card-body">Card</div>
-      <div class="card card-body">Card</div>
-      <div class="card card-body">Card</div>
-      <div class="card card-body">Card</div>
-  </div>
-</section>
-<section id="featured">
-  <h2 class="subheader">Featured lessons this week:</h2>
-<div class="d-flex flex-row flex-nowrap horizontal-scroll">
-    <div class="card card-body">
-      <img class="card-image" src="assets/card1.jpg" alt="">
-      <h4 class="card-title">Introduction to computer science</h4>
+    <div id='resultsDiv'>
+
     </div>
-    <div class="card card-body">
-      <img class="card-image" src="assets/card2.jpg" alt="">
-    </div>
-    <div class="card card-body">
-      <img class="card-image" src="assets/card3.jpg" alt="">
-    </div>
-    <div class="card card-body">
-      <img class="card-image" src="assets/card4.jpg" alt="">
-    </div>
-    <div class="card card-body">
-      <img class="card-image" src="assets/card5.jpg" alt="">
-    </div>
-    <div class="card card-body">
-      <img class="card-image" src="assets/card6.jpg" alt="">
-    </div>
-    <div class="card card-body">
-      <img class="card-image" src="assets/card7.jpg" alt="">
-    </div>
-    <div class="card card-body">
-      <img class="card-image" src="assets/card8.jpg" alt="">
-    </div>
-    <div class="card card-body">
-      <img class="card-image" src="assets/card9.jpg" alt="">
-    </div>
-    <div class="card card-body">Card</div>
-    <div class="card card-body">Card</div>
-    <div class="card card-body">Card</div>
-    <div class="card card-body">Card</div>
-    <div class="card card-body">Card</div>
-</div>
 </section>
     <!-- Optional JavaScript; choose one of the two! -->
 
@@ -221,7 +113,25 @@
 
     <div id="getResult1"></div>
 <!-- Button trigger modal -->
-
+<div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+      <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel"></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+          <form class="modal-body">
+              <h3>Please Sign In to Book Now!</h3>
+          </form>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <a class="btn buttonSearch btn-user btn-block" href="login.html">
+                Sign In
+              </a>
+          </div>
+      </div>
+  </div>
+</div>
 
 </body>
 
