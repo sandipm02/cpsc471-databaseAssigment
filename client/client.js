@@ -566,11 +566,13 @@ function getStudentMain(){
                               '<br> End Time: ' + end + 
                               '<br> Session ID [' + element.Sessionid + ']<hr>';
           }else{
+            var user = "'" + element.T_username + "'";
             past.innerHTML += 'Tutor Username: ' + element.T_username +
                               '<br> Date: ' + element.User_date.slice(0, 10) + 
                               '<br> Start Time: ' + start + 
                               '<br> End Time: ' + end + 
-                              '<br> Session ID [' + element.Sessionid + ']<hr>';
+                              '<br> Session ID [' + element.Sessionid + ']'+
+                              '<br> <button class="buttonSearch" id="ratingButton" data-bs-toggle="modal" data-bs-target="#ratingModal" onclick="getBookingTutor('+ user + ')">Give a Rating</button><hr>';
           }
           
         }else{
@@ -664,4 +666,39 @@ function logoDirect() {
 
 
   window.location = dir + "/index.html";
+}
+
+
+function giveRating(rating, t_user){
+  console.log(t_user);
+  getLoggedUser()
+   .then(data => {
+     var username = data;
+
+     var data = JSON.stringify({
+       "T_username": t_user, 
+       "S_username": username,
+       "Stars": rating
+      });
+
+      var config = {
+        method: 'post',
+        url: 'http://localhost:3000/rating',
+        headers: { 
+          'Content-Type': 'application/json'
+        },
+        data : data
+      };
+
+      axios(config)
+      .then(function (response) {
+        console.log("Valid Review")
+        window.location = dir + "/studentMain.html";
+      })
+      .catch(function (error) {
+        console.log("Invalid Review");
+      });
+}).catch(function(err){
+  console.log(err);
+});
 }

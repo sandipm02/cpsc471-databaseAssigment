@@ -20,6 +20,7 @@ const qualificationRoutes = require('./RESTAPI/qualification');
 const timeslotRoutes = require('./RESTAPI/timeslot');
 const helperRoutes = require('./RESTAPI/helper');
 const subjectRoutes = require('./RESTAPI/subject');
+const ratingRoutes = require('./RESTAPI/rating');
 
 app.use('/user', userRoutes);
 app.use('/location', locationRoutes);
@@ -27,7 +28,7 @@ app.use('/qualification', qualificationRoutes);
 app.use('/timeslot', timeslotRoutes);
 app.use('/helper', helperRoutes);
 app.use('/subject', subjectRoutes);
-
+app.use('/rating', ratingRoutes);
 
 
 
