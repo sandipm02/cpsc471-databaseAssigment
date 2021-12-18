@@ -390,7 +390,6 @@ function generateResultTutorHTMLOutput(response, i){
   '<p>Major: '+ response.Major + '</p>' +
   '<p>Subject: '+ response.Subjectname + '</p>' +
   '<p>Email: '+ response.Email + '</p>' +
-  '<p>Stars: '+ response.Avg_stars + '/5</p>' +
   '</div>'
   +'<div class="col-sm">'
   +'<button class="buttonSearch" data-bs-toggle="modal" data-bs-target="#bookingModal" onclick="getBookingTutor('+ username + ')">Book Now!</button>'
