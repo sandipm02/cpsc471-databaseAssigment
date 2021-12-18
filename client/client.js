@@ -425,7 +425,7 @@ function getTutorMain() {
 
     
     resultElement = document.getElementById('tutorQualification');
-    resultElement.innerHTML = 'Highest Education Achieved: ' + result.Accredidation +
+    resultElement.innerHTML = 'Highest Education Achieved: ' + result.Accreditation +
                               '<br>Major: ' + result.Major + 
                               '<br>Graduation Date: ' + result.Graddate + 
                               '<br>GPA: ' + result.Gpa + '.0';
