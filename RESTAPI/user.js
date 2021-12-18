@@ -30,11 +30,17 @@ router.get('/tutors', (req, res)=>{
     var accreditation = req.query.accreditation;
     var location = req.query.location;
     var rating = req.query.rating;
-    console.log(rating)
-    console.log(subject)
+    
 
     var locString = location.toString();
-    
+
+    var part = rating.split('.');
+        var ratingNo = part[0];
+
+    console.log(ratingNo)
+    console.log(subject)
+    console.log(location)
+    console.log(accreditation)
 
     if (subject != "Any Subject") {
         sqlsub = "JOIN studyhubdb.subject ON studyhubdb.subject.Subjectname = " + SqlString.escape(subject) +" AND studyhubdb.user.Username = studyhubdb.subject.Username ";
@@ -53,8 +59,7 @@ router.get('/tutors', (req, res)=>{
         sqlloc = "JOIN studyhubdb.location ON studyhubdb.user.Locationid = studyhubdb.location.Id ";
     }
     if (rating != "Any Rating"){
-        var part = rating.split('.');
-        var ratingNo = part[0];
+        
         
         sqlrat = "JOIN (SELECT studyhubdb.rating.T_username, COUNT(*) AS Total_ratings, AVG(Stars) AS Avg_stars FROM studyhubdb.rating GROUP BY studyhubdb.rating.T_username HAVING Avg_stars > " + SqlString.escape(ratingNo) + ") AS r"
 
@@ -62,7 +67,7 @@ router.get('/tutors', (req, res)=>{
         sqlrat = "JOIN (SELECT studyhubdb.rating.T_username, COUNT(*) AS Total_ratings, AVG(Stars) AS Avg_stars FROM studyhubdb.rating GROUP BY studyhubdb.rating.T_username) AS r"
     }
 
-    var sql = "SELECT * FROM studyhubdb.user " + sqlsub + sqlacc + sqlloc + sqlrat;
+    var sql = "SELECT DISTINCT * FROM studyhubdb.user " + sqlsub + sqlacc + sqlloc + sqlrat;
 
     console.log(sql)
 

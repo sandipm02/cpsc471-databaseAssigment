@@ -254,11 +254,16 @@ function search(subject, accreditation, location, rating) {
     var resultElement = document.getElementById('resultsDiv');
     resultElement.innerHTML = '';
 
-    console.log(response.data)
-    
+
+
     var i = 0;
     response.data.forEach(element => {
-      resultElement.innerHTML +=  generateResultTutorHTMLOutput(response.data[i]);
+      
+      resultElement.innerHTML +=  generateResultTutorHTMLOutput(response.data[i], i);
+ 
+      
+      
+      
       i += 1;
 
     });
@@ -292,15 +297,16 @@ myModal.toggle()
 }
 
 
-function generateResultTutorHTMLOutput(response){
+function generateResultTutorHTMLOutput(response, i){
   var username = "'"+ response.Username + "'";
   return '<div class="response row"><div class="col-sm">'+
   '<img class="image" src="assets/card' + Math.floor(Math.random() * 8) + '.jpg">'+
   '</div>'+
-  '<div class="col-sm">'+
+  '<div class="col-sm" id = ' + i.toString() + '>'+
   '<h4>Name: ' + response.Fname+ ' ' + response.Lname + '</h4>' + 
-  '<h5>Username:'+ response.Username + '</h5>' +
-  '<p>'+ response.Major + '</p>' +
+  '<h5>Username: '+ response.Username + '</h5>' +
+  '<p>Major: '+ response.Major + '</p>' +
+  '<p>Subject: '+ response.Subjectname + '</p>' +
   '</div>'
   +'<div class="col-sm">'
   +'<button class="buttonSearch" data-bs-toggle="modal" data-bs-target="#bookingModal" onclick="getBookingTutor('+ username + ')">Book Now!</button>'
@@ -348,6 +354,7 @@ function getTutorMain() {
     .then(function(response){
       console.log(response.data)
       console.log(response.data[0].Fname)
+
       var result = response.data[0];
       var resultElement = document.getElementById('tutorTitle');
       resultElement.innerHTML = result.Fname + " " + result.Lname;
@@ -357,7 +364,20 @@ function getTutorMain() {
     resultElement.innerHTML = '<img class="image" src="assets/card' + Math.floor(Math.random() * 8) + '.jpg">';
 
     resultElement = document.getElementById('tutorSubjects');
-    resultElement.innerHTML = result.Subjectname;
+    var subjectArr = [];
+    var i = 0;
+    response.data.forEach(elem => {
+      subjectArr.push(response.data[i].Subjectname)
+      i += 1;
+    })
+    console.log(subjectArr)
+      
+    subjectArr.forEach(elem => {
+      resultElement.innerHTML += elem + " ";
+    })
+    
+
+    
     resultElement = document.getElementById('tutorQualification');
     resultElement.innerHTML = 'Highest Education Achieved: ' + result.Accredidation +
                               '<br>Major: ' + result.Major + 
