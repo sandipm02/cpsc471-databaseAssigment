@@ -55,7 +55,7 @@ CREATE TABLE `qualification` (
   `Major` varchar(255) DEFAULT NULL,
   `Graddate` varchar(255) DEFAULT NULL,
   `Gpa` int DEFAULT NULL,
-  `Accredidation` varchar(255) DEFAULT NULL,
+  `Accreditation` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`Username`),
   CONSTRAINT `qualification_ibfk_1` FOREIGN KEY (`Username`) REFERENCES `user` (`Username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -67,7 +67,7 @@ CREATE TABLE `qualification` (
 
 LOCK TABLES `qualification` WRITE;
 /*!40000 ALTER TABLE `qualification` DISABLE KEYS */;
-INSERT INTO `qualification` VALUES ('jeff2','Arts','2021-12-17',4,'Master Degree'),('jim08','Computer Science','2021-12-17',4,'Master Degree'),('lastguy2','Engineering','2021-12-17',3,'Master Degree'),('teacher21','Bio','2021-12-17',2,'Master Degree');
+INSERT INTO `qualification` VALUES ('jeff2','Arts','2021-12-17',4,'Master Degree'),('jim08','Computer Science','2021-12-17',4,'Master Degree'),('lastguy2','Engineering','2021-12-17',3,'Master Degree'),('new2','Education','2021-12-23',NULL,'Bachelors Degree'),('teacher21','Bio','2021-12-17',2,'Master Degree');
 /*!40000 ALTER TABLE `qualification` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -95,6 +95,7 @@ CREATE TABLE `rating` (
 
 LOCK TABLES `rating` WRITE;
 /*!40000 ALTER TABLE `rating` DISABLE KEYS */;
+INSERT INTO `rating` VALUES ('jeff2','student1',3),('jeff2','student2',1);
 /*!40000 ALTER TABLE `rating` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -119,7 +120,7 @@ CREATE TABLE `subject` (
 
 LOCK TABLES `subject` WRITE;
 /*!40000 ALTER TABLE `subject` DISABLE KEYS */;
-INSERT INTO `subject` VALUES ('jeff2','Math'),('jim08','Math'),('jim08','Social Studies'),('lastguy2','Science'),('teacher21','Biology');
+INSERT INTO `subject` VALUES ('jeff2','Mathematics'),('jim08','Mathematics'),('jim08','Social Studies'),('lastguy2','Biology'),('new2','Business'),('teacher21','Biology');
 /*!40000 ALTER TABLE `subject` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -178,7 +179,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES ('jeff2','jeff@gmail.com','password','Jeff','Guy','Tutor',3),('jim08','j@gmail.com','password','Jim','Browning','Tutor',2),('lastguy2','last@gmail.com','password','Chris','Robert','Tutor',1),('teacher21','teachallday@gmail.com','password','Allan','Shoe','Tutor',1);
+INSERT INTO `user` VALUES ('jeff2','jeff@gmail.com','password','Jeff','Guy','Tutor',3),('jim08','j@gmail.com','password','Jim','Browning','Tutor',2),('lastguy2','last@gmail.com','password','Chris','Robert','Tutor',1),('new2','n@gmail.com','password','newTutor','newguy','Tutor',4),('student1','student1@gmail.com','password','Stu','One','Student',1),('student2','student2@gmaiil.com','password','Stu','Two','Student',1),('teacher21','teachallday@gmail.com','password','Allan','Shoe','Tutor',1);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -191,4 +192,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-12-17 22:53:41
+-- Dump completed on 2021-12-18 11:17:18
