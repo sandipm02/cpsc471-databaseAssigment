@@ -48,7 +48,16 @@ router.get('/checkLogin', function(req, res) {
 })
 
 
+router.get('/getLoggedType', function(req, res) {
 
+   fs.readFile('./client/localdata.json', (err, data) => {
+      if (err) throw err;
+      let loggedUser = JSON.parse(data).AccType;
+      res.send(loggedUser)
+  });
+   
+
+})
 
 
 

@@ -42,7 +42,19 @@ function verifyLogin(username, password) {
 
     if (response.data.length > 0) {
       console.log("Valid Login")
-      window.location = dir + "/index.html";
+
+
+      getLoggedType()
+      .then(data => {
+        var type = data;
+
+        window.location = dir + "/" + type + "Main.html";
+
+
+      })
+
+
+      
     } else {
       resultElement.innerHTML = '<p>Incorrect username or password</p>';
       console.log("Invalid Login")
@@ -143,6 +155,14 @@ function verifyRegistration(Fname, Lname, Username, Email, Password, Type, Locat
 
 function getLoggedUser() {
   return axios.get('http://localhost:3000/helper/getLoggedUser')
+      .then(response => {
+
+        return response.data;
+      })
+ }
+
+ function getLoggedType() {
+  return axios.get('http://localhost:3000/helper/getLoggedType')
       .then(response => {
 
         return response.data;

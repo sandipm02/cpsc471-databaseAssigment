@@ -67,7 +67,7 @@ CREATE TABLE `qualification` (
 
 LOCK TABLES `qualification` WRITE;
 /*!40000 ALTER TABLE `qualification` DISABLE KEYS */;
-INSERT INTO `qualification` VALUES ('jeff2','Arts','2021-12-17',4,'Master Degree'),('jim08','Computer Science','2021-12-17',4,'Master Degree'),('lastguy2','Engineering','2021-12-17',3,'Master Degree'),('new2','Education','2021-12-23',NULL,'Bachelors Degree'),('teacher21','Bio','2021-12-17',2,'Master Degree');
+INSERT INTO `qualification` VALUES ('jeff2','Art','2021-11-30',2,'Bachelors Degree'),('jim08','Computer Science','2021-12-17',4,'Master Degree'),('lastguy2','Engineering','2021-12-17',3,'Master Degree'),('new2','Education','2021-12-23',NULL,'Bachelors Degree'),('teacher21','Bio','2021-12-17',2,'Master Degree');
 /*!40000 ALTER TABLE `qualification` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -144,7 +144,7 @@ CREATE TABLE `timeslot` (
   KEY `S_username` (`S_username`),
   CONSTRAINT `timeslot_ibfk_1` FOREIGN KEY (`T_username`) REFERENCES `user` (`Username`),
   CONSTRAINT `timeslot_ibfk_2` FOREIGN KEY (`S_username`) REFERENCES `user` (`Username`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -153,6 +153,7 @@ CREATE TABLE `timeslot` (
 
 LOCK TABLES `timeslot` WRITE;
 /*!40000 ALTER TABLE `timeslot` DISABLE KEYS */;
+INSERT INTO `timeslot` VALUES (1,'jeff2','student1','2000-10-02',200,300,1),(2,'jim08','student3','2022-01-02',400,600,0),(3,'jeff2','student3','2022-01-20',600,720,1),(4,'jim08','student1','2021-12-24',800,860,1),(5,'jeff2','student2','2021-12-26',400,460,0);
 /*!40000 ALTER TABLE `timeslot` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -181,7 +182,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES ('jeff2','jeff@gmail.com','password','Jeff','Guy','Tutor',3),('jim08','j@gmail.com','password','Jim','Browning','Tutor',2),('lastguy2','last@gmail.com','password','Chris','Robert','Tutor',1),('new2','n@gmail.com','password','newTutor','newguy','Tutor',4),('student1','student1@gmail.com','password','Stu','One','Student',1),('student2','student2@gmaiil.com','password','Stu','Two','Student',1),('teacher21','teachallday@gmail.com','password','Allan','Shoe','Tutor',1);
+INSERT INTO `user` VALUES ('jeff2','jeff@gmail.com','password','Jeff','Guy','Tutor',3),('jim08','j@gmail.com','password','Jim','Browning','Tutor',2),('lastguy2','last@gmail.com','password','Chris','Robert','Tutor',1),('new2','n@gmail.com','password','newTutor','newguy','Tutor',4),('student1','student1@gmail.com','password','Andy','Anderson','Student',1),('student2','student2@gmaiil.com','password','Jesper','Tjader','Student',1),('student3','s3@gmail.com','password','Zach','Doelling','Student',2),('teacher21','teachallday@gmail.com','password','Allan','Shoe','Tutor',1);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -194,4 +195,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-12-18 13:00:43
+-- Dump completed on 2021-12-18 15:03:25
