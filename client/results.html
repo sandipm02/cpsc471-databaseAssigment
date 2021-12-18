@@ -124,6 +124,34 @@
 </div>
 
     <section id="page"> 
+      <button class="buttonSearch" data-bs-toggle="modal" data-bs-target="#bookingModal" onclick="getBookings()">Edit Bookings</button>
+      <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Finish your booking request:</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+                <form class="modal-body">
+                    <div class="row">
+                        <div class="col-sm">
+                            <h4>You are booking with: <div id="usernameDiv"></div> </h4>
+                        </div>
+                        <div class="col-sm">
+                            <h4>Select a date:</h4>
+                        </div>
+                    </div>
+                </form>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button class="btn buttonSearch btn-user btn-block" onclick="remove(document.getElementById('bookingList').value)">
+                      Confirm
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+      
         <div id="resultsDiv">
           
         </div>

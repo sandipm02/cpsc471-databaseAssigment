@@ -259,7 +259,7 @@ function search() {
     var i = 0;
     response.data.forEach(element => {
     
-      resultElement.innerHTML += generateResultsHTMLOutput(response.data[i]);
+      resultElement.innerHTML +=  generateResultTutorHTMLOutput(response.data[i]);
       i += 1;
 
     });
@@ -277,6 +277,8 @@ function search() {
 });
 
 }
+
+
 
 function generateResultsHTMLOutput(response) {
   return  '<h4>Name' + response.Fname+ '</h4>' + 
@@ -305,7 +307,7 @@ function getTutorMain() {
   
       console.log(response.data)
       console.log(response.data[0].Fname)
-  
+      
     })
     .catch(function(err){
       console.log(err);
@@ -323,4 +325,16 @@ function generateTutorMainiHTMLOutput(response) {
 
 }
 
+
+function generateResultTutorHTMLOutput(response){
+  var username = "'"+ response.Username + "'";
+  return  '<h4>Name' + response.Fname+ '</h4>' + 
+  '<h5>Username:</h5> ' + 
+  '<p>' + response.Username + '</p>' +
+  '<button class="buttonSearch" data-bs-toggle="modal" data-bs-target="#bookingModal" onclick="getBookingTutor('+ username + ')">Book Now!</button>';
+}
+function getBookingTutor(username){
+  var resultElement = document.getElementById('usernameDiv');
+  resultElement.innerHTML = username;
+}
 //document.getElementById('subjectList').value, document.getElementById('accreditationList').value, document.getElementById('locationList').value, document.getElementById('ratingLIst').value
