@@ -10,7 +10,7 @@ function testing() {
 
   })
   .catch(function(err){
-    console.log("NOT WORKING");
+    console.log(err);
 
   });
   
@@ -130,7 +130,7 @@ function tutorRegistration(accredidation, major, grade, graddate, subject) {
 
     var loc = window.location.pathname;
     var dir = loc.substring(0, loc.lastIndexOf('/'));
-    
+
     var Username = data;
 
 
@@ -236,3 +236,53 @@ function populateLocationList() {
 function generateHTMLLocations(location) {
   return '<option>'+location+'</option>';
 }
+
+
+function search() {
+
+  var loc = window.location.pathname;
+  var dir = loc.substring(0, loc.lastIndexOf('/'));
+  
+  
+
+  axios.get('http://localhost:3000/user/tutors')
+  .then(function(response){
+  
+    
+
+    var resultElement = document.getElementById('resultsDiv');
+    resultElement.innerHTML = '';
+
+
+    
+    var i = 0;
+    response.data.forEach(element => {
+    
+      resultElement.innerHTML += generateResultsHTMLOutput(response.data[i]);
+      i += 1;
+
+    });
+
+
+    
+    
+    
+
+
+})
+.catch(function(err){
+  console.log(err);
+
+});
+
+}
+
+function generateResultsHTMLOutput(response) {
+  return  '<h4>Name' + response.Fname+ '</h4>' + 
+          '<h5>Status:</h5> ' + 
+          '<pre>' + response.Username + '</pre>';
+
+}
+
+
+//document.getElementById('subjectList').value, document.getElementById('accreditationList').value, document.getElementById('locationList').value, document.getElementById('ratingLIst').value

@@ -17,6 +17,18 @@ router.get('/', (req, res)=>{
 
 });
 
+router.get('/tutors', (req, res)=>{
+
+    connection.query('SELECT * FROM studyhubdb.user WHERE Usertype = "Tutor"', (err, rows, fields)=>{
+        if(!err)
+        res.send(rows);
+        else
+        console.log(err);
+    })
+
+
+});
+
 
 router.post('/', function(req, res) {
 
