@@ -132,13 +132,15 @@ DROP TABLE IF EXISTS `timeslot`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `timeslot` (
+  `Sessionid` int NOT NULL AUTO_INCREMENT,
   `T_username` varchar(255) NOT NULL,
   `S_username` varchar(255) NOT NULL,
   `User_date` date NOT NULL,
   `Time_start` int NOT NULL,
   `Time_end` int NOT NULL,
-  `Sessionid` int NOT NULL,
-  PRIMARY KEY (`T_username`,`S_username`,`Sessionid`),
+  `IsApproved` tinyint NOT NULL,
+  PRIMARY KEY (`Sessionid`,`T_username`,`S_username`),
+  KEY `T_username` (`T_username`),
   KEY `S_username` (`S_username`),
   CONSTRAINT `timeslot_ibfk_1` FOREIGN KEY (`T_username`) REFERENCES `user` (`Username`),
   CONSTRAINT `timeslot_ibfk_2` FOREIGN KEY (`S_username`) REFERENCES `user` (`Username`)
@@ -192,4 +194,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-12-18 11:17:18
+-- Dump completed on 2021-12-18 13:00:43
