@@ -63,7 +63,7 @@
         <form class="user" target="dummyframe">
             <div class="row">
                 <div class="col-sm">
-                    <h4>2.What are your qualifications?</h4>
+                    <h4>1.What are your qualifications?</h4>
                     <p>Accreditation:</p>
                     <select id="accreditationList" class="form-select">
                         <option selected>None</option>
@@ -73,26 +73,30 @@
                         <option >Ph.D</option>
                       </select>
                       <p>Major:</p>
-                    <input  id="major" class="form-control form-control-user" placeholder="Enter your last name">
+                    <input  id="major" class="form-control form-control-user" placeholder="Enter your major">
                      <p>GPA/Overall Grade:</p>
-                    <input id="grade" type="number" step="0.1" class="form-control form-control-user" placeholder="Enter your GPA">
+                    <input id="grade" type="number" value="0" step="0.1" class="form-control form-control-user" placeholder="Enter your GPA">
                     <p>Graduation Date:</p>
-                    <input id="gradDate" type="date" class="form-control form-control-user">
+                    <input id="gradDate" type="date" value="0001-01-01" class="form-control form-control-user">
                    
                 </div>
                 <div class="col-sm">
-                    <h4>1.Where are you located?</h4>
-                    <p>Country:</p>
-                    <input id="country" class="form-control form-control-user" placeholder="Enter your country">
-                    <p>State/Province:</p>
-                    <input id="state" class="form-control form-control-user" placeholder="Enter your state/province">
-                    <p>City</p>
-                    <input id="city" class="form-control form-control-user" placeholder="Enter your city">
+                    <div class="form-group">
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <button class="btn btn-login btn-user btn-block" onclick="tutorRegistration(document.getElementById('accreditationList').value, document.getElementById('major').value, document.getElementById('grade').value, document.getElementById('gradDate').value, document.getElementById('subjectList').value)">
+                            Confirm Registration
+                        </button>
+                        </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm">
-                    <h4>3.Select the subject you are teaching:</h4>
+                    <h4>2.Select the subject you are teaching:</h4>
                     <select id="subjectList" class="form-select">
                         <option>Select...</option>
                         <option >Mathematics</option>
@@ -108,14 +112,12 @@
                       </select>      
                       <i>Note: You can add more later.</i>        
                     </div>
+                    <div class="col-sm">
+                    
+                    </div>
             </div>
         
-            <div class="form-group">
-                <br>
-                <button class="btn btn-login btn-user btn-block" onclick="tutorRegistration(document.getElementById('accreditationList').value, document.getElementById('major').value, document.getElementById('grade').value, document.getElementById('gradDate').value, document.getElementById('country').value, document.getElementById('state').value,document.getElementById('city').value, document.getElementById('subjectList').value)">
-                    Confirm Registration
-                </button>
-                </div>
+
             </form>
     </section>
 </body>

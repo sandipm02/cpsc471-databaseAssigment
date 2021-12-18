@@ -37,7 +37,7 @@ CREATE TABLE `location` (
 
 LOCK TABLES `location` WRITE;
 /*!40000 ALTER TABLE `location` DISABLE KEYS */;
-INSERT INTO `location` VALUES (21,'Vancouver','Canada','Alberta'),(22,'Calgary','Canada','Alberta');
+INSERT INTO `location` VALUES (1,'Calgary','Canada','Alberta'),(21,'Vancouver','Canada','Alberta');
 /*!40000 ALTER TABLE `location` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -50,10 +50,10 @@ DROP TABLE IF EXISTS `qualification`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `qualification` (
   `Username` varchar(255) NOT NULL,
-  `Accreditation` varchar(255) DEFAULT NULL,
   `Major` varchar(255) DEFAULT NULL,
   `Graddate` varchar(255) DEFAULT NULL,
   `Gpa` int DEFAULT NULL,
+  `Accredidation` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`Username`),
   CONSTRAINT `qualification_ibfk_1` FOREIGN KEY (`Username`) REFERENCES `user` (`Username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -65,7 +65,57 @@ CREATE TABLE `qualification` (
 
 LOCK TABLES `qualification` WRITE;
 /*!40000 ALTER TABLE `qualification` DISABLE KEYS */;
+INSERT INTO `qualification` VALUES ('jim08','Computer Science','2021-12-17',NULL,'Master Degree');
 /*!40000 ALTER TABLE `qualification` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `rating`
+--
+
+DROP TABLE IF EXISTS `rating`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `rating` (
+  `Username` varchar(255) NOT NULL,
+  `Stars` int NOT NULL,
+  PRIMARY KEY (`Username`),
+  CONSTRAINT `rating_ibfk_1` FOREIGN KEY (`Username`) REFERENCES `user` (`Username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `rating`
+--
+
+LOCK TABLES `rating` WRITE;
+/*!40000 ALTER TABLE `rating` DISABLE KEYS */;
+/*!40000 ALTER TABLE `rating` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `subject`
+--
+
+DROP TABLE IF EXISTS `subject`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `subject` (
+  `Username` varchar(255) NOT NULL,
+  `Subjectname` varchar(255) NOT NULL,
+  PRIMARY KEY (`Username`),
+  CONSTRAINT `subject_ibfk_1` FOREIGN KEY (`Username`) REFERENCES `user` (`Username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `subject`
+--
+
+LOCK TABLES `subject` WRITE;
+/*!40000 ALTER TABLE `subject` DISABLE KEYS */;
+INSERT INTO `subject` VALUES ('jim08','Social Studies');
+/*!40000 ALTER TABLE `subject` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -110,7 +160,8 @@ CREATE TABLE `user` (
   `Pword` varchar(255) NOT NULL,
   `Fname` varchar(255) NOT NULL,
   `Lname` varchar(255) NOT NULL,
-  `Usertype` varchar(255) DEFAULT NULL,
+  `Usertype` varchar(255) NOT NULL,
+  `Locationid` int NOT NULL,
   PRIMARY KEY (`Username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -121,7 +172,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES ('tutoring','tutor@gmail.com','tutorpassword','tutor','one','Tutor'),('user1','user1@gmail.com','password','User','One','Tutor'),('userPost','Post@gmail.com','goodpassword1','userr','post','Tutor');
+INSERT INTO `user` VALUES ('jim08','j@gmail.com','password','jimothy','one','Tutor',21),('user1','user1@gmail.com','password','User','One','Tutor',1),('userPost','Post@gmail.com','goodpassword1','userr','post','Tutor',1);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -134,4 +185,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-12-17 14:54:01
+-- Dump completed on 2021-12-17 20:25:19

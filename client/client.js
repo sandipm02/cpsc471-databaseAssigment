@@ -1,11 +1,3 @@
-
-var username;
-var password;
-
-var loggedIn = false;
-
-
-
 function testing() {
     var resultElement = document.getElementById('getResult1');
     resultElement.innerHTML = '';
@@ -65,19 +57,22 @@ function verifyLogin(username, password) {
 
 
 
-function verifyRegistration(Fname, Lname, Username, Email, Password, Type) {
+function verifyRegistration(Fname, Lname, Username, Email, Password, Type, Locationid) {
+
+
 
   var loc = window.location.pathname;
   var dir = loc.substring(0, loc.lastIndexOf('/'));
 
-  if (Fname != "" && Lname != "" && Username != "" && Email != "" && Password != "" &&  Type != "Select...") {
+  if (Fname != "" && Lname != "" && Username != "" && Email != "" && Password != "" &&  Type != "Select..." && Locationid != "Any Location") {
     var data = JSON.stringify({
       "Username": Username,
       "Email": Email,
       "Pword": Password,
       "Fname": Fname,
       "Lname": Lname,
-      "Type": Type
+      "Type": Type,
+      "Locationid": Locationid
     });
 
     var config = {
@@ -92,9 +87,14 @@ function verifyRegistration(Fname, Lname, Username, Email, Password, Type) {
 
     axios(config)
     .then(function (response) {
-      console.log(JSON.stringify(response.data));
       console.log("Valid Registration")
-          window.location = dir + "/login.html";
+
+      if (Type.localeCompare("Student") == 0) {
+        console.log("Student Registration")
+        window.location = dir + "/index.html";
+      } else {
+        window.location = dir + "/tutorRegistration.html";
+      }
     })
     .catch(function (error) {
       console.log("Invalid username");
@@ -102,11 +102,6 @@ function verifyRegistration(Fname, Lname, Username, Email, Password, Type) {
 
 
 
-    if (Type = "Student") {
-
-    } else {
-
-    }
 
   } else {
     console.log("Invalid registration form")
@@ -115,7 +110,100 @@ function verifyRegistration(Fname, Lname, Username, Email, Password, Type) {
 }
 
 
+function getLoggedUser() {
+  return axios.get('http://localhost:3000/helper/getLoggedUser')
+      .then(response => {
 
+        return response.data;
+      })
+ }
+
+
+
+function tutorRegistration(accredidation, major, grade, graddate, subject) {
+
+
+
+
+  getLoggedUser()
+  .then(data => {
+
+    var loc = window.location.pathname;
+    var dir = loc.substring(0, loc.lastIndexOf('/'));
+    
+    var Username = data;
+
+
+    if (accredidation != "None" && major != "" && grade != 0 && graddate != "0001-01-01" && subject != "Select...") {
+      
+
+
+
+      // POST TO QUALIFICATION
+      var data = JSON.stringify({
+        "Username": Username,
+        "Accredidation": accredidation,
+        "Major": major,
+        "Grade": parseInt(grade),
+        "Graddate": graddate,
+      });
+
+      var config = {
+        method: 'post',
+        url: 'http://localhost:3000/qualification',
+        headers: { 
+          'Content-Type': 'application/json'
+        },
+        data : data
+      };
+
+
+      axios(config)
+      .then(function (response) {
+        console.log("Valid Qualificiation Registration")
+      })
+      .catch(function (error) {
+        console.log("Invalid Qualificiation Registration");
+      });
+
+      // POST TO SUBJECT
+
+      var data = JSON.stringify({
+        "Username": Username,
+        "Subject": subject
+      });
+
+      var config = {
+        method: 'post',
+        url: 'http://localhost:3000/subject',
+        headers: { 
+          'Content-Type': 'application/json'
+        },
+        data : data
+      };
+
+      axios(config)
+      .then(function (response) {
+        console.log("Valid Subject Registration")
+        window.location = dir + "/index.html";
+      })
+      .catch(function (error) {
+        console.log("Invalid Subject Registration");
+      });
+
+
+
+
+
+
+
+
+    } else {
+      console.log("Invalid tutor registration form")
+    }
+  });
+    
+}
 
 
 function populateLocationList() {
@@ -131,7 +219,7 @@ function populateLocationList() {
   var i = 0;
   response.data.forEach(element => {
     var opt = document.createElement('option');
-    opt.value = element.City;
+    opt.value = element.Id;
     opt.innerHTML = element.City;
     listElement.appendChild(opt);
   });

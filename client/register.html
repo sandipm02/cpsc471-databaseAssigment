@@ -23,7 +23,7 @@
 
 </head>
 
-<body> 
+<body onLoad="populateLocationList()"> 
        <!-- NAVBAR -->
        <nav class="navbar navbar-expand-lg navbar-light formatting fixed-top">
         <div class="container-fluid">
@@ -93,10 +93,21 @@
 
                 </div>
             </div>
+            <div class="row">
+                <div class="col-sm">
+                    <h4>Location</h4>
+                    <select id="locationList" class="form-select">
+                        <option selected>Any Location</option>
+                      </select>
+                </div>
+                <div class="col-sm">
+
+                </div>
+            </div>
 
             <div class="form-group">
                 <br><br>
-                <button class="btn btn-login btn-user btn-block" onclick="verifyRegistration(document.getElementById('firstName').value, document.getElementById('lastName').value, document.getElementById('username').value, document.getElementById('email').value, document.getElementById('password').value, document.getElementById('type').value)">
+                <button class="btn btn-login btn-user btn-block" onclick="verifyRegistration(document.getElementById('firstName').value, document.getElementById('lastName').value, document.getElementById('username').value, document.getElementById('email').value, document.getElementById('password').value, document.getElementById('type').value, document.getElementById('locationList').value)">
                 Register
                 </button>
                 </div>
