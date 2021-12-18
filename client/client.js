@@ -481,14 +481,29 @@ function getStudentMain(){
           upcoming.innerHTML += 'Tutor Username: ' + element.T_username +
                               '<br> Date: ' + element.User_date.slice(0, 10) + 
                               '<br> Start Time: ' + start + 
-                              '<br> End Time: ' + end;
+                              '<br> End Time: ' + end + 
+                              '<br> Session ID [' + element.Sessionid + ']<hr>';
+                              
         }else{
           pending.innerHTML += 'Tutor Username: ' + element.T_username +
                               '<br> Date: ' + element.User_date.slice(0, 10) + 
                               '<br> Start Time: ' + start + 
-                              '<br> End Time: ' + end;
+                              '<br> End Time: ' + end + 
+                              '<br> Session ID [' + element.Sessionid + ']<hr>';
+                              
         }
       })
+
+      var bookList = document.getElementById('bookingList');
+
+      response.data.forEach(element => {
+        var opt = document.createElement('option');
+        opt.value = element.Sessionid;
+        opt.innerHTML = "[" + element.Sessionid + "] with " + element.T_username;
+        bookList.appendChild(opt);
+      });
+
+
 
     }).catch(function(err){
     console.log(err);
