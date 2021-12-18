@@ -10,7 +10,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
     <link rel="manifest" href="assets/site.webmanifest">
     <link rel="stylesheet" href="style/style.css">
-    <link rel="stylesheet" href="style/tutorMain.css">
+    <link rel="stylesheet" href="style/results.css">
     <title>StudyHub - Connect with Tutors</title>
 
     <!-- Bootstrap CSS -->
@@ -132,16 +132,27 @@
                 <form class="modal-body">
                     <div class="row">
                         <div class="col-sm">
-                            <h4>You are booking with: <div id="usernameDiv"></div> </h4>
+                            <h5>You are booking with: <div id="usernameDiv"></div> </h5>
                         </div>
                         <div class="col-sm">
-                            <h4>Select a date:</h4>
+                            <h5>Select a date:</h5>
+                            <input type="date" id="bookingDate">
                         </div>
                     </div>
+                    <div class="row">
+                      <div class="col-sm">
+                          <h5>Select a start time:</h5>
+                          <input type="time" id="startTime">
+                      </div>
+                      <div class="col-sm">
+                        <h5>Select a end time:</h5>
+                          <input type="time" id="endTime">
+                      </div>
+                  </div>
                 </form>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button class="btn buttonSearch btn-user btn-block" onclick="remove(document.getElementById('bookingList').value)">
+                    <button class="btn buttonSearch btn-user btn-block" onclick="requestBooking(document.getElementById('usernameDiv'),document.getElementById('bookingDate'),document.getElementById('startTime'),document.getElementById('endTime'))">
                       Confirm
                     </button>
                 </div>

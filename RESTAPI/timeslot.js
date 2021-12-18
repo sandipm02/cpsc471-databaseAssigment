@@ -15,5 +15,18 @@ router.get('/', (req, res)=>{
 
 });
 
+router.get('/tutor', (req, res)=>{
+
+    connection.query('SELECT * FROM studyhubdb.timeslot WHERE studyhubdb.timeslot.T_username=?',[req.query.username], (err, rows, fields)=>{
+        if(!err){
+        res.send(rows);
+        //console.log(rows);
+    }
+        else
+        console.log(err);
+    })
+
+
+});
 
 module.exports = router;

@@ -45,9 +45,6 @@
                     <li class="nav-item ">
                         <a class="nav-link navItem " href="# ">Learn More</a>
                     </li>
-                    <li class="nav-item ">
-                        <a class="nav-link navItem " href="login.html">Sign In</a>
-                    </li>
 
                 </ul>
             </div>
@@ -55,18 +52,24 @@
     </nav>
 
     <section id="page"> 
-        <div id="tutorTitle"></div>
-        <div id="tutorRating"></div>
-        <div id="tutorImages"></div>
         <div class="row">
             <div class="col-sm-7">
-                <h5>Subjects:</h5>
-                <div id="tutorSubjects"></div>
-                <h5>Qualifications:</h5>
-                <div id="tutorQualification"></div>
+        <h4>Name: <span id="tutorTitle"></span></h4>
+        <div id="tutorRating"></div>
+        <h5>Subject: <span id="tutorSubjects"></span></h5>
+        
+        <div id="tutorImages"></div>
+        <h6>Location: <span id="tutorLocation"></span></h6>
+        <h6>Email: <span id="tutorEmail"></span></h6>
+        
+               
+        <h5>Qualifications: </h5>
+        <h6 id="tutorQualification"></h6>
+
+                
             </div>
             <div class="col-sm-4 bookings">
-                
+                <div id="tutorTimeslots"></div>
                 <button class="buttonSearch" data-bs-toggle="modal" data-bs-target="#bookingModal" onclick="getBookings()">Edit Bookings</button>
                 <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">

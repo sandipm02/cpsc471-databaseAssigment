@@ -13,3 +13,9 @@ body{
     min-height: 60vh;
     box-shadow: -1px 1px 4px 4px rgba(0,0,0,0.05);
 }
+
+.image{
+    height: 300px !important;;
+    padding:0 !important;
+    border-radius: 10px;
+}

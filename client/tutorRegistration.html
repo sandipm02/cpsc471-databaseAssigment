@@ -25,35 +25,30 @@
 
 <body> 
      <!-- NAVBAR -->
-     <nav class="navbar navbar-expand-lg navbar-light formatting fixed-top">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <img src="./assets/logo-wide.png" width="180" height="40" class="d-inline-block align-top" alt="">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class=" nav-item ">
-                      <a href="results.html" class="buttonSearch" >Search </a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 ">
-                    <li class="nav-item ">
-                        <a class="nav-link navItemActive " href="# ">Home</a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link navItem " href="# ">Learn More</a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link navItem " href="login.html">Sign In</a>
-                    </li>
-
-                </ul>
-            </div>
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-light formatting fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <img src="./assets/logo-wide.png" width="180" height="40" class="d-inline-block align-top" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 ">
+                <li class="nav-item ">
+                    <a class="nav-link navItem " href="index.html">Home</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link navItem " href="login.html">Sign In</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link navItemActive " href="register.html">Sign Upn</a>
+                </li>
+            </ul>
         </div>
-    </nav>
+    </div>
+</nav>
     
     <section id="page"> 
     <div class="form-group">
@@ -62,8 +57,9 @@
         <iframe name="dummyframe" id="dummyframe" style="display: none;"></iframe>
         <form class="user" target="dummyframe">
             <div class="row">
+                <h4>1.What are your qualifications?</h4>
                 <div class="col-sm">
-                    <h4>1.What are your qualifications?</h4>
+                    
                     <p>Accreditation:</p>
                     <select id="accreditationList" class="form-select">
                         <option selected>None</option>
@@ -74,19 +70,12 @@
                       </select>
                       <p>Major:</p>
                     <input  id="major" class="form-control form-control-user" placeholder="Enter your last name">
-                     <p>GPA/Overall Grade:</p>
+                </div>
+                <div class="col-sm">
+                    <p>GPA/Overall Grade:</p>
                     <input id="grade" type="number" step="0.1" class="form-control form-control-user" placeholder="Enter your GPA">
                     <p>Graduation Date:</p>
                     <input id="gradDate" type="date" class="form-control form-control-user">
-                   
-                </div>
-                <div class="col-sm">
-                    <div class="form-group">
-                        <br><br><br><br><br><br><br>
-                        <button class="btn btn-login btn-user btn-block" onclick="tutorRegistration(document.getElementById('accreditationList').value, document.getElementById('major').value, document.getElementById('grade').value, document.getElementById('gradDate').value, document.getElementById('subjectList').value)">
-                            Confirm Registration
-                        </button>
-                    </div>
                 </div>
             </div>
             <div class="row">
@@ -108,7 +97,11 @@
                       <i>Note: You can add more later.</i>        
                     </div>
             </div>
-
+            <div class="form-group">
+                <button class="btn btn-login btn-user btn-block" onclick="tutorRegistration(document.getElementById('accreditationList').value, document.getElementById('major').value, document.getElementById('grade').value, document.getElementById('gradDate').value, document.getElementById('subjectList').value)">
+                    Confirm Registration 
+                </button>
+            </div>
 
             
         

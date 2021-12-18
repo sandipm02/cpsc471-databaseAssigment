@@ -188,7 +188,7 @@ function tutorRegistration(accredidation, major, grade, graddate, subject) {
       axios(config)
       .then(function (response) {
         console.log("Valid Subject Registration")
-        window.location = dir + "/index.html";
+        window.location = dir + "/tutorMain.html";
       })
       .catch(function (error) {
         console.log("Invalid Subject Registration");
@@ -258,7 +258,6 @@ function search(subject, accreditation, location, rating) {
     
     var i = 0;
     response.data.forEach(element => {
-    
       resultElement.innerHTML +=  generateResultTutorHTMLOutput(response.data[i]);
       i += 1;
 
@@ -292,49 +291,113 @@ function openModal(){
 myModal.toggle()
 }
 
-function getTutorMain() {
-
-
-  getLoggedUser()
-  .then(data => {
-
-    var Username = data;
-
-
-    const queryString = '/?username=' + Username;
-    axios.get('http://localhost:3000/user/tutor' + queryString)
-    .then(function(response){
-  
-      console.log(response.data)
-      console.log(response.data[0].Fname)
-      
-    })
-    .catch(function(err){
-      console.log(err);
-  
-    });
-  });
-
-
-}
-
-function generateTutorMainiHTMLOutput(response) {
-  return  '<h4>Name' + response.Fname+ '</h4>' + 
-          '<h5>Status:</h5> ' + 
-          '<pre>' + response.Username + '</pre>';
-
-}
-
 
 function generateResultTutorHTMLOutput(response){
   var username = "'"+ response.Username + "'";
-  return  '<h4>Name' + response.Fname+ '</h4>' + 
-  '<h5>Username:</h5> ' + 
-  '<p>' + response.Username + '</p>' +
-  '<button class="buttonSearch" data-bs-toggle="modal" data-bs-target="#bookingModal" onclick="getBookingTutor('+ username + ')">Book Now!</button>';
+  return '<div class="response row"><div class="col-sm">'+
+  '<img class="image" src="assets/card' + Math.floor(Math.random() * 8) + '.jpg">'+
+  '</div>'+
+  '<div class="col-sm">'+
+  '<h4>Name: ' + response.Fname+ ' ' + response.Lname + '</h4>' + 
+  '<h5>Username:'+ response.Username + '</h5>' +
+  '<p>'+ response.Major + '</p>' +
+  '</div>'
+  +'<div class="col-sm">'
+  +'<button class="buttonSearch" data-bs-toggle="modal" data-bs-target="#bookingModal" onclick="getBookingTutor('+ username + ')">Book Now!</button>'
+  +'</div>'
+  +'</div>';
 }
 function getBookingTutor(username){
   var resultElement = document.getElementById('usernameDiv');
   resultElement.innerHTML = username;
 }
-//document.getElementById('subjectList').value, document.getElementById('accreditationList').value, document.getElementById('locationList').value, document.getElementById('ratingLIst').value
+
+function requestBooking(t_user, date, startTime, endTime){
+  console.log(startTime);
+
+  // getLoggedUser()
+  // .then(data => {
+  //   var username = data;
+
+  //   var data = JSON.stringify({
+  //     "T_username": t_user, 
+  //     "S_username": data, 
+  //     "User_date":date
+  //   });
+
+  //   var config = {
+  //     method: 'post',
+  //     url: 'http://localhost:3000/user',
+  //     headers: { 
+  //       'Content-Type': 'application/json'
+  //     },
+  //     data : data
+  //   };
+  // });
+}
+
+
+function getTutorMain() {
+  getLoggedUser()
+  .then(data => {
+
+    var Username = data;
+
+    const queryString = '/?username=' + Username;
+    axios.get('http://localhost:3000/user/tutor' + queryString)
+    .then(function(response){
+      console.log(response.data)
+      console.log(response.data[0].Fname)
+      var result = response.data[0];
+      var resultElement = document.getElementById('tutorTitle');
+      resultElement.innerHTML = result.Fname + " " + result.Lname;
+  
+
+    resultElement = document.getElementById('tutorImages');
+    resultElement.innerHTML = '<img class="image" src="assets/card' + Math.floor(Math.random() * 8) + '.jpg">';
+
+    resultElement = document.getElementById('tutorSubjects');
+    resultElement.innerHTML = result.Subjectname;
+    resultElement = document.getElementById('tutorQualification');
+    resultElement.innerHTML = 'Highest Education Achieved: ' + result.Accredidation +
+                              '<br>Major: ' + result.Major + 
+                              '<br>Graduation Date: ' + result.Graddate + 
+                              '<br>GPA: ' + result.Gpa + '.0';
+    resultElement = document.getElementById('tutorLocation');
+    resultElement.innerHTML = result.City + ", " + result.Stateprovince + ", " + result.Country;
+    
+    resultElement = document.getElementById('tutorEmail');
+    resultElement.innerHTML = result.Email;
+  })
+    .catch(function(err){
+      console.log(err);
+    });
+
+  axios.get('http://localhost:3000/timeslot/tutor' + queryString)
+  .then(function(response){
+    var i = 0; 
+    var resultElement = document.getElementById('tutorTimeslots');
+    response.data.forEach(element => {
+      console.log(response.data[i]);
+      resultElement.innerHTML = generateTutorTimeslotHTMLOutput(response.data[i]);
+    })
+  })
+  .catch(function(err){
+    console.log(err);
+  });
+
+  });
+}
+function generateTutorTimeslotHTMLOutput(response){
+  return '<div class="timeslot">' + 
+        '<h6>' + 'Student Name: ' + response.S_username + '</h6>' + 
+        '<h6>' + 'Date: ' + response.User_date + '</h6>' + 
+        '<h6>' + 'Start Time: ' + response.Time_start + '</h6>' + 
+        '<h6>' + 'End Time: ' + response.Time_end + '</h6>' + 
+        '</div>';
+}
+function generateTutorMainiHTMLOutput(response) {
+  return  '<h4>Name' + response.Fname+ '</h4>' + 
+          '<h5>Status:</h5> ' + 
+          '<pre>' + response.Username + '</pre>';
+}
