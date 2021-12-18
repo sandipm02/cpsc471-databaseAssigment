@@ -441,10 +441,39 @@ function getTutorMain() {
   axios.get('http://localhost:3000/timeslot/tutor' + queryString)
   .then(function(response){
     var i = 0; 
-    var resultElement = document.getElementById('tutorTimeslots');
+    var upcoming = document.getElementById('TutorTimeslots');
+    var upcoming = document.getElementById('TutorTimeslotsPending');
     response.data.forEach(element => {
-      console.log(response.data[i]);
-      resultElement.innerHTML = generateTutorTimeslotHTMLOutput(response.data[i]);
+      
+      var start = Math.floor(element.Time_start / 60) + ":";
+      var end = Math.floor(element.Time_end / 60) + ":";
+      if(element.Time_start %60 < 10){
+        start += '0' + (element.Time_start %60); 
+      }else{
+        start +=element.Time_start %60;
+      }
+      if(element.Time_end %60 < 10){
+        end += '0' + (element.Time_end %60); 
+      }else{
+        end +=element.Time_end %60;
+      }
+
+      if(element.IsApproved){
+        upcoming.innerHTML += 'Student Username: ' + element.S_username +
+                            '<br> Date: ' + element.User_date.slice(0, 10) + 
+                            '<br> Start Time: ' + start + 
+                            '<br> End Time: ' + end + 
+                            '<br> Session ID [' + element.Sessionid + ']<hr>';
+                            
+      }else{
+        pending.innerHTML += 'Student Username: ' + element.S_username +
+                            '<br> Date: ' + element.User_date.slice(0, 10) + 
+                            '<br> Start Time: ' + start + 
+                            '<br> End Time: ' + end + 
+                            '<br> Session ID [' + element.Sessionid + ']<hr>';
+                            
+      }
+
     })
   })
   .catch(function(err){
@@ -482,6 +511,8 @@ function getStudentMain(){
       resultElement.innerHTML = 'Name: ' + res.Fname + ' ' + res.Lname +
                             '<br>Username: ' + res.Username +
                             '<br>Email: ' + res.Email;
+
+      
 
     }).catch(function(err){
       console.log(err);
