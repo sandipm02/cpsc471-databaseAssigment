@@ -164,7 +164,7 @@ function verifyRegistration(Fname, Lname, Username, Email, Password, Type, Locat
 
       if (Type.localeCompare("Student") == 0) {
         console.log("Student Registration")
-        window.location = dir + "/index.html";
+        window.location = dir + "/studentMain.html";
       } else {
         window.location = dir + "/tutorRegistration.html";
       }
@@ -399,12 +399,10 @@ function getBookingTutor(username){
 }
 
 function requestBooking(t_user, date, startTime, duration){
-  console.log(startTime);
 
-  console.log(t_user)
-  console.log(date)
-  console.log(startTime)
-  console.log(duration)
+
+  var loc = window.location.pathname;
+  var dir = loc.substring(0, loc.lastIndexOf('/'));
 
 
 
@@ -432,7 +430,7 @@ function requestBooking(t_user, date, startTime, duration){
      axios(config)
      .then(function (response) {
        console.log("Booking added")
-       //window.location = dir + "/studentMain.html";
+       window.location = dir + "/studentMain.html";
      })
      .catch(function (error) {
        console.log("Booking error\n" + error);
@@ -526,7 +524,7 @@ function getTutorMain() {
                             '<br> Start Time: ' + start + 
                             '<br> End Time: ' + end + 
                             '<br> Session ID [' + element.Sessionid + ']' +
-                            '<br> <button class="buttonSearch" id="acceptButton" data-bs-toggle="modal" data-bs-target="#acceptModal" onclick="approveTime('+ id + ')">Approve</button><hr>';
+                            '<br> <button class="buttonSearch" id="acceptButton" data-bs-toggle="modal" data-bs-target="#acceptModal" onclick="approveTime('+ id + ')">Approve</button>';
                             
       }
     })
