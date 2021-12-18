@@ -638,19 +638,30 @@ function editTutorProfile(accreditation, major, grade, graddate) {
 
       axios(config)
       .then(function (response) {
-        console.log("Valid Qualificiation Registration")
+        console.log("Valid edit")
+        window.location = dir + "/tutorMain.html";
       })
       .catch(function (error) {
-        console.log("Invalid Qualificiation Registration");
+        console.log("Invalid edit");
       });
 
 
     } else {
-      console.log("Invalid update")
+      console.log("Invalid edit")
     }
 
 
   });
     
 
+}
+
+
+
+function logoDirect() {
+  var loc = window.location.pathname;
+  var dir = loc.substring(0, loc.lastIndexOf('/'));
+
+
+  window.location = dir + "/index.html";
 }
