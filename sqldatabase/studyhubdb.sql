@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `studyhubdb` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `studyhubdb`;
 -- MySQL dump 10.13  Distrib 8.0.27, for Win64 (x86_64)
 --
 -- Host: localhost    Database: studyhubdb
@@ -37,7 +39,7 @@ CREATE TABLE `location` (
 
 LOCK TABLES `location` WRITE;
 /*!40000 ALTER TABLE `location` DISABLE KEYS */;
-INSERT INTO `location` VALUES (1,'Calgary','Canada','Alberta'),(21,'Vancouver','Canada','Alberta');
+INSERT INTO `location` VALUES (1,'Calgary','Canada','Alberta'),(2,'Toronto','Canada','Ontario'),(3,'Vancouver','Canada','BC'),(4,'Edmonton','Canada','Alberta');
 /*!40000 ALTER TABLE `location` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -65,7 +67,7 @@ CREATE TABLE `qualification` (
 
 LOCK TABLES `qualification` WRITE;
 /*!40000 ALTER TABLE `qualification` DISABLE KEYS */;
-INSERT INTO `qualification` VALUES ('jim08','Computer Science','2021-12-17',NULL,'Master Degree');
+INSERT INTO `qualification` VALUES ('jeff2','Arts','2021-12-17',4,'Master Degree'),('jim08','Computer Science','2021-12-17',4,'Master Degree'),('lastguy2','Engineering','2021-12-17',3,'Master Degree'),('teacher21','Bio','2021-12-17',2,'Master Degree');
 /*!40000 ALTER TABLE `qualification` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -77,10 +79,13 @@ DROP TABLE IF EXISTS `rating`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `rating` (
-  `Username` varchar(255) NOT NULL,
+  `T_username` varchar(255) NOT NULL,
+  `S_username` varchar(255) NOT NULL,
   `Stars` int NOT NULL,
-  PRIMARY KEY (`Username`),
-  CONSTRAINT `rating_ibfk_1` FOREIGN KEY (`Username`) REFERENCES `user` (`Username`)
+  PRIMARY KEY (`T_username`,`S_username`),
+  KEY `S_username` (`S_username`),
+  CONSTRAINT `rating_ibfk_1` FOREIGN KEY (`T_username`) REFERENCES `user` (`Username`),
+  CONSTRAINT `rating_ibfk_2` FOREIGN KEY (`S_username`) REFERENCES `user` (`Username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -103,7 +108,7 @@ DROP TABLE IF EXISTS `subject`;
 CREATE TABLE `subject` (
   `Username` varchar(255) NOT NULL,
   `Subjectname` varchar(255) NOT NULL,
-  PRIMARY KEY (`Username`),
+  PRIMARY KEY (`Username`,`Subjectname`),
   CONSTRAINT `subject_ibfk_1` FOREIGN KEY (`Username`) REFERENCES `user` (`Username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -114,7 +119,7 @@ CREATE TABLE `subject` (
 
 LOCK TABLES `subject` WRITE;
 /*!40000 ALTER TABLE `subject` DISABLE KEYS */;
-INSERT INTO `subject` VALUES ('jim08','Social Studies');
+INSERT INTO `subject` VALUES ('jeff2','Math'),('jim08','Math'),('jim08','Social Studies'),('lastguy2','Science'),('teacher21','Biology');
 /*!40000 ALTER TABLE `subject` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -128,10 +133,11 @@ DROP TABLE IF EXISTS `timeslot`;
 CREATE TABLE `timeslot` (
   `T_username` varchar(255) NOT NULL,
   `S_username` varchar(255) NOT NULL,
-  `User_date` char(6) NOT NULL,
-  `User_hour` int NOT NULL,
-  `IsFree` bit(1) NOT NULL,
-  PRIMARY KEY (`T_username`,`S_username`),
+  `User_date` date NOT NULL,
+  `Time_start` int NOT NULL,
+  `Time_end` int NOT NULL,
+  `Sessionid` int NOT NULL,
+  PRIMARY KEY (`T_username`,`S_username`,`Sessionid`),
   KEY `S_username` (`S_username`),
   CONSTRAINT `timeslot_ibfk_1` FOREIGN KEY (`T_username`) REFERENCES `user` (`Username`),
   CONSTRAINT `timeslot_ibfk_2` FOREIGN KEY (`S_username`) REFERENCES `user` (`Username`)
@@ -172,7 +178,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES ('jim08','j@gmail.com','password','jimothy','one','Tutor',21),('user1','user1@gmail.com','password','User','One','Tutor',1),('userPost','Post@gmail.com','goodpassword1','userr','post','Tutor',1);
+INSERT INTO `user` VALUES ('jeff2','jeff@gmail.com','password','Jeff','Guy','Tutor',3),('jim08','j@gmail.com','password','Jim','Browning','Tutor',2),('lastguy2','last@gmail.com','password','Chris','Robert','Tutor',1),('teacher21','teachallday@gmail.com','password','Allan','Shoe','Tutor',1);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -185,4 +191,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-12-17 20:25:19
+-- Dump completed on 2021-12-17 22:53:41
