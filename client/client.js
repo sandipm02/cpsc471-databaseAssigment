@@ -318,28 +318,47 @@ function getBookingTutor(username){
   resultElement.innerHTML = username;
 }
 
-function requestBooking(t_user, date, startTime, endTime){
+function requestBooking(t_user, date, startTime, duration){
   console.log(startTime);
 
-  // getLoggedUser()
-  // .then(data => {
-  //   var username = data;
+  console.log(t_user)
+  console.log(date)
+  console.log(startTime)
+  console.log(duration)
 
-  //   var data = JSON.stringify({
-  //     "T_username": t_user, 
-  //     "S_username": data, 
-  //     "User_date":date
-  //   });
 
-  //   var config = {
-  //     method: 'post',
-  //     url: 'http://localhost:3000/user',
-  //     headers: { 
-  //       'Content-Type': 'application/json'
-  //     },
-  //     data : data
-  //   };
-  // });
+
+   getLoggedUser()
+   .then(data => {
+     var username = data;
+
+     var data = JSON.stringify({
+       "T_username": t_user, 
+       "S_username": username, 
+       "User_date":date,
+       "StartTime": startTime,
+       "duration": duration
+     });
+
+     var config = {
+       method: 'post',
+       url: 'http://localhost:3000/timeslot',
+         headers: { 
+         'Content-Type': 'application/json'
+       },
+       data : data
+     };
+
+     axios(config)
+     .then(function (response) {
+       console.log("Booking added")
+       //window.location = dir + "/studentMain.html";
+     })
+     .catch(function (error) {
+       console.log("Booking error\n" + error);
+     });
+
+   });
 }
 
 

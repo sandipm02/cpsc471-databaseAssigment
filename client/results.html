@@ -64,7 +64,7 @@
           <h4>Subject</h4>
           <div class="col-sm">
           <select id="subjectList" class="form-select">
-            <option>Any Subject</option>
+            <option selected>Any Subject</option>
             <option >Mathematics</option>
             <option >Physics</option>
             <option >Chemistry</option>
@@ -141,18 +141,25 @@
                     </div>
                     <div class="row">
                       <div class="col-sm">
+                          <br>
                           <h5>Select a start time:</h5>
                           <input type="time" id="startTime">
                       </div>
                       <div class="col-sm">
-                        <h5>Select a end time:</h5>
-                          <input type="time" id="endTime">
+                        <h5>Select a duration (hours):</h5>    
+                        <select id="durationList" class="form-select">
+                          <option selected>1</option>
+                          <option >2</option>
+                          <option >3</option>
+                          <option >4</option>
+                        </select>
+                          
                       </div>
                   </div>
                 </form>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button class="btn buttonSearch btn-user btn-block" onclick="requestBooking(document.getElementById('usernameDiv'),document.getElementById('bookingDate'),document.getElementById('startTime'),document.getElementById('endTime'))">
+                    <button class="btn buttonSearch btn-user btn-block" onclick="requestBooking(document.getElementById('usernameDiv').innerHTML,document.getElementById('bookingDate').value,document.getElementById('startTime').value,document.getElementById('durationList').value)">
                       Confirm
                     </button>
                 </div>
