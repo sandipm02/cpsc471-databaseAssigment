@@ -62,7 +62,66 @@
                
         <h5>Qualifications: </h5>
         <h6 id="tutorQualification"></h6>
-
+        <button class="buttonSearch" data-bs-toggle="modal" data-bs-target="#editTutorModal">Edit Profile</button>
+        <div class="modal fade" id="editTutorModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Select your search criteria:</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                    <form class="modal-body">
+                        <div class="row">
+                            <h4>1.What are your qualifications?</h4>
+                            <div class="col-sm">
+                                
+                                <p>Accreditation:</p>
+                                <select id="accreditationList" class="form-select">
+                                    <option selected>None</option>
+                                    <option >Diploma</option>
+                                    <option >Bachelors Degree </option>
+                                    <option >Master Degree</option>
+                                    <option >Ph.D</option>
+                                  </select>
+                                  <p>Major:</p>
+                                <input  id="major" class="form-control form-control-user" placeholder="Enter your last name">
+                            </div>
+                            <div class="col-sm">
+                                <p>GPA/Overall Grade:</p>
+                                <input id="grade" type="number" step="0.1" class="form-control form-control-user" placeholder="Enter your GPA">
+                                <p>Graduation Date:</p>
+                                <input id="gradDate" type="date" class="form-control form-control-user">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm">
+                                <h4>2.Select the subject you are teaching:</h4>
+                                <select id="subjectList" class="form-select">
+                                    <option>Select...</option>
+                                    <option >Mathematics</option>
+                                    <option >Physics</option>
+                                    <option >Chemistry</option>
+                                    <option >Biology</option>
+                                    <option >Computer Science</option>
+                                    <option >Language Arts</option>
+                                    <option >Business</option>
+                                    <option >Social Studies</option>
+                                    <option >Foreign Language</option>
+                                    <option >Culinary Arts</option>
+                                  </select>      
+                                  <i>Note: You can add more later.</i>        
+                                </div>
+                        </div>
+                    </form>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button class="btn buttonSearch btn-user btn-block" onclick="editTutorProfile(document.getElementById('accreditationList').value, document.getElementById('major').value, document.getElementById('grade').value, document.getElementById('gradDate').value, document.getElementById('subjectList').value)">
+                          Confirm
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
                 
             </div>
             <div class="col-sm-4 bookings">
