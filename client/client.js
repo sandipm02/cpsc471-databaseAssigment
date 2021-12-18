@@ -57,7 +57,7 @@ function verifyLogin(username, password) {
     
 }
 
-function removeBooking(Sessionid) {
+function removeBooking(Sessionid, type) {
 
 
   var loc = window.location.pathname;
@@ -78,7 +78,7 @@ function removeBooking(Sessionid) {
   
   axios(config)
   .then(function (response) {
-    window.location = dir + "/studentMain.html";
+    window.location = dir + "/" + type + "Main.html";
   })
   .catch(function (error) {
     console.log(error);
@@ -86,6 +86,7 @@ function removeBooking(Sessionid) {
 
 
 }
+
 
 function verifyRegistration(Fname, Lname, Username, Email, Password, Type, Locationid) {
 
@@ -442,7 +443,7 @@ function getTutorMain() {
   .then(function(response){
     var i = 0; 
     var upcoming = document.getElementById('TutorTimeslots');
-    var upcoming = document.getElementById('TutorTimeslotsPending');
+    var pending = document.getElementById('TutorTimeslotsPending');
     response.data.forEach(element => {
       
       var start = Math.floor(element.Time_start / 60) + ":";
@@ -475,6 +476,18 @@ function getTutorMain() {
       }
 
     })
+
+
+    var bookList = document.getElementById('bookingList');
+
+    response.data.forEach(element => {
+      var opt = document.createElement('option');
+      opt.value = element.Sessionid;
+      opt.innerHTML = "[" + element.Sessionid + "] with " + element.S_username;
+      bookList.appendChild(opt);
+    });
+
+
   })
   .catch(function(err){
     console.log(err);
