@@ -506,12 +506,29 @@ function getStudentMain(){
           end +=element.Time_end %60;
         }
         if(element.IsApproved){
-          upcoming.innerHTML += 'Tutor Username: ' + element.T_username +
+          var today = new Date();
+          var dd = String(today.getDate()).padStart(2, '0');
+          var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+          var yyyy = today.getFullYear();
+          var time = today.getHours() * 60 + today.getMinutes();
+          console.log(dd);
+          if( (yyyy < element.User_date.slice(0, 4))
+          || (yyyy == element.User_date.slice(0, 4) && mm < element.User_date.slice(5,7)) 
+          || (yyyy == element.User_date.slice(0, 4) && mm == element.User_date.slice(5,7) && dd < element.User_date.slice(8,10)) 
+          || (yyyy == element.User_date.slice(0, 4) && mm == element.User_date.slice(5,7) && dd == element.User_date.slice(8,10) && time < element.Time_start)  ){
+            upcoming.innerHTML += 'Tutor Username: ' + element.T_username +
                               '<br> Date: ' + element.User_date.slice(0, 10) + 
                               '<br> Start Time: ' + start + 
                               '<br> End Time: ' + end + 
                               '<br> Session ID [' + element.Sessionid + ']<hr>';
-                              
+          }else{
+            past.innerHTML += 'Tutor Username: ' + element.T_username +
+                              '<br> Date: ' + element.User_date.slice(0, 10) + 
+                              '<br> Start Time: ' + start + 
+                              '<br> End Time: ' + end + 
+                              '<br> Session ID [' + element.Sessionid + ']<hr>';
+          }
+          
         }else{
           pending.innerHTML += 'Tutor Username: ' + element.T_username +
                               '<br> Date: ' + element.User_date.slice(0, 10) + 
