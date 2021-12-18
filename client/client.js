@@ -512,14 +512,15 @@ function getTutorMain() {
                             '<br> Session ID [' + element.Sessionid + ']<hr>';
                             
       }else{
+        var id = "'" + element.Sessionid + "'";
         pending.innerHTML += 'Student Username: ' + element.S_username +
                             '<br> Date: ' + element.User_date.slice(0, 10) + 
                             '<br> Start Time: ' + start + 
                             '<br> End Time: ' + end + 
-                            '<br> Session ID [' + element.Sessionid + ']<hr>';
+                            '<br> Session ID [' + element.Sessionid + ']' +
+                            '<br> <button class="buttonSearch" id="acceptButton" data-bs-toggle="modal" data-bs-target="#acceptModal" onclick="approveTime('+ id + ')">Approve</button><hr>';
                             
       }
-
     })
 
 
