@@ -56,6 +56,29 @@ router.post('/', function(req, res) {
 
  
  })
+
+ router.post('/remove', function(req, res) {
+
+    let t = req.body;
+
+
+    connection.query("DELETE FROM studyhubdb.timeslot WHERE studyhubdb.timeslot.Sessionid = ?", [t.Sessionid], function(err, result, fields) {
+
+
+        if (!err) {
+
+            res.send(result);
+            } else {
+            console.log(err)
+            }
+
+    })
+
+
+ 
+ })
+
+
  router.get('/student', (req, res)=>{
 
     connection.query('SELECT * FROM studyhubdb.timeslot WHERE studyhubdb.timeslot.S_username=?',[req.query.username], (err, rows, fields)=>{

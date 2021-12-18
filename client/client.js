@@ -57,7 +57,35 @@ function verifyLogin(username, password) {
     
 }
 
+function removeBooking(Sessionid) {
 
+
+  var loc = window.location.pathname;
+  var dir = loc.substring(0, loc.lastIndexOf('/'));
+
+  var data = JSON.stringify({
+    "Sessionid": Sessionid
+  });
+  
+  var config = {
+    method: 'post',
+    url: 'http://localhost:3000/timeslot/remove',
+    headers: { 
+      'Content-Type': 'application/json'
+    },
+    data : data
+  };
+  
+  axios(config)
+  .then(function (response) {
+    window.location = dir + "/studentMain.html";
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+
+
+}
 
 function verifyRegistration(Fname, Lname, Username, Email, Password, Type, Locationid) {
 
