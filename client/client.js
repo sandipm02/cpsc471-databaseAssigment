@@ -599,3 +599,58 @@ function getStudentMain(){
   });
 });
 }
+
+
+function editTutorProfile(accreditation, major, grade, graddate) {
+  getLoggedUser()
+  .then(data => {
+    
+
+    var loc = window.location.pathname;
+    var dir = loc.substring(0, loc.lastIndexOf('/'));
+
+    var Username = data;
+
+
+    if (accreditation != "None" && major != "" && grade != 0 && graddate != "0001-01-01") {
+      
+
+
+
+      // POST TO QUALIFICATION
+      var data = JSON.stringify({
+        "Username": Username,
+        "Accreditation": accreditation,
+        "Major": major,
+        "Grade": parseInt(grade),
+        "Graddate": graddate,
+      });
+
+      var config = {
+        method: 'post',
+        url: 'http://localhost:3000/qualification/edit',
+        headers: { 
+          'Content-Type': 'application/json'
+        },
+        data : data
+      };
+
+
+      axios(config)
+      .then(function (response) {
+        console.log("Valid Qualificiation Registration")
+      })
+      .catch(function (error) {
+        console.log("Invalid Qualificiation Registration");
+      });
+
+
+    } else {
+      console.log("Invalid update")
+    }
+
+
+  });
+    
+
+}

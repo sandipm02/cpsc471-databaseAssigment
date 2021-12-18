@@ -72,7 +72,7 @@
                 </div>
                     <form class="modal-body">
                         <div class="row">
-                            <h4>1.What are your qualifications?</h4>
+                            <h4>1.Update qualifications</h4>
                             <div class="col-sm">
                                 
                                 <p>Accreditation:</p>
@@ -86,36 +86,19 @@
                                   <p>Major:</p>
                                 <input  id="major" class="form-control form-control-user" placeholder="Enter your last name">
                             </div>
+                            
                             <div class="col-sm">
+                            
                                 <p>GPA/Overall Grade:</p>
                                 <input id="grade" type="number" step="0.1" class="form-control form-control-user" placeholder="Enter your GPA">
                                 <p>Graduation Date:</p>
                                 <input id="gradDate" type="date" class="form-control form-control-user">
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-sm">
-                                <h4>2.Select the subject you are teaching:</h4>
-                                <select id="subjectList" class="form-select">
-                                    <option>Select...</option>
-                                    <option >Mathematics</option>
-                                    <option >Physics</option>
-                                    <option >Chemistry</option>
-                                    <option >Biology</option>
-                                    <option >Computer Science</option>
-                                    <option >Language Arts</option>
-                                    <option >Business</option>
-                                    <option >Social Studies</option>
-                                    <option >Foreign Language</option>
-                                    <option >Culinary Arts</option>
-                                  </select>      
-                                  <i>Note: You can add more later.</i>        
-                                </div>
-                        </div>
                     </form>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button class="btn buttonSearch btn-user btn-block" onclick="editTutorProfile(document.getElementById('accreditationList').value, document.getElementById('major').value, document.getElementById('grade').value, document.getElementById('gradDate').value, document.getElementById('subjectList').value)">
+                        <button class="btn buttonSearch btn-user btn-block" onclick="editTutorProfile(document.getElementById('accreditationList').value, document.getElementById('major').value, document.getElementById('grade').value, document.getElementById('gradDate').value)">
                           Confirm
                         </button>
                     </div>
