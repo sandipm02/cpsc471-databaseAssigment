@@ -29,6 +29,20 @@ router.get('/tutors', (req, res)=>{
 
 });
 
+router.get('/tutor', (req, res)=>{
+
+    var username = req.query.username;
+
+    connection.query('SELECT * FROM studyhubdb.user JOIN studyhubdb.qualification ON studyhubdb.user.Username = ? AND studyhubdb.user.Username = studyhubdb.qualification.Username AND studyhubdb.user.Usertype = "Tutor" JOIN studyhubdb.subject ON studyhubdb.subject.Username = studyhubdb.user.Username JOIN studyhubdb.location ON studyhubdb.location.ID = studyhubdb.user.Locationid', [username], (err, rows, fields)=>{
+        if(!err)
+        res.send(rows);
+        else
+        console.log(err);
+    })
+
+
+});
+
 
 router.post('/', function(req, res) {
 

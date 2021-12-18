@@ -289,4 +289,38 @@ function openModal(){
   var myModal = new bootstrap.Modal(document.getElementById('searchModal'), {})
 myModal.toggle()
 }
+
+function getTutorMain() {
+
+
+  getLoggedUser()
+  .then(data => {
+
+    var Username = data;
+
+
+    const queryString = '/?username=' + Username;
+    axios.get('http://localhost:3000/user/tutor' + queryString)
+    .then(function(response){
+  
+      console.log(response.data)
+      console.log(response.data[0].Fname)
+  
+    })
+    .catch(function(err){
+      console.log(err);
+  
+    });
+  });
+
+
+}
+
+function generateTutorMainiHTMLOutput(response) {
+  return  '<h4>Name' + response.Fname+ '</h4>' + 
+          '<h5>Status:</h5> ' + 
+          '<pre>' + response.Username + '</pre>';
+
+}
+
 //document.getElementById('subjectList').value, document.getElementById('accreditationList').value, document.getElementById('locationList').value, document.getElementById('ratingLIst').value
