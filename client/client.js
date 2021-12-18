@@ -255,11 +255,9 @@ function search(subject, accreditation, location, rating) {
     resultElement.innerHTML = '';
 
 
-
     var i = 0;
     response.data.forEach(element => {
-      
-      resultElement.innerHTML +=  generateResultTutorHTMLOutput(response.data[i], i);
+      resultElement.innerHTML +=  generateResultTutorHTMLOutput(element, i);
  
       
       
@@ -300,7 +298,7 @@ myModal.toggle()
 function generateResultTutorHTMLOutput(response, i){
   var username = "'"+ response.Username + "'";
   return '<div class="response row"><div class="col-sm">'+
-  '<img class="image" src="assets/card' + Math.floor(Math.random() * 8) + '.jpg">'+
+  '<img class="image" src="assets/card' + i + '.jpg">'+
   '</div>'+
   '<div class="col-sm" id = ' + i.toString() + '>'+
   '<h4>Name: ' + response.Fname+ ' ' + response.Lname + '</h4>' + 
@@ -439,4 +437,61 @@ function generateTutorMainiHTMLOutput(response) {
   return  '<h4>Name' + response.Fname+ '</h4>' + 
           '<h5>Status:</h5> ' + 
           '<pre>' + response.Username + '</pre>';
+}
+
+function getStudentMain(){
+  getLoggedUser()
+  .then(data => {
+
+    var Username = data;
+
+    const queryString = '/?username=' + Username;
+    axios.get('http://localhost:3000/user/student' + queryString)
+    .then(function(response){
+      var res = response.data[0];
+      console.log(res);
+      var resultElement = document.getElementById('studentInformation');
+      resultElement.innerHTML = 'Name: ' + res.Fname + ' ' + res.Lname +
+                            '<br>Username: ' + res.Username +
+                            '<br>Email: ' + res.Email;
+
+    }).catch(function(err){
+      console.log(err);
+    });
+    var upcoming = document.getElementById('upcomingTimeSlots');
+    var past = document.getElementById('pastTimeSlots');
+    var pending = document.getElementById('pendingTimeSlots');
+    axios.get('http://localhost:3000/timeslot/student' + queryString)
+    .then(function(response){
+      response.data.forEach(element => {
+        console.log(element);
+        var start = Math.floor(element.Time_start / 60) + ":";
+        var end = Math.floor(element.Time_end / 60) + ":";
+        if(element.Time_start %60 < 10){
+          start += '0' + (element.Time_start %60); 
+        }else{
+          start +=element.Time_start %60;
+        }
+        if(element.Time_end %60 < 10){
+          end += '0' + (element.Time_end %60); 
+        }else{
+          end +=element.Time_end %60;
+        }
+        if(element.IsApproved){
+          upcoming.innerHTML += 'Tutor Username: ' + element.T_username +
+                              '<br> Date: ' + element.User_date.slice(0, 10) + 
+                              '<br> Start Time: ' + start + 
+                              '<br> End Time: ' + end;
+        }else{
+          pending.innerHTML += 'Tutor Username: ' + element.T_username +
+                              '<br> Date: ' + element.User_date.slice(0, 10) + 
+                              '<br> Start Time: ' + start + 
+                              '<br> End Time: ' + end;
+        }
+      })
+
+    }).catch(function(err){
+    console.log(err);
+  });
+});
 }

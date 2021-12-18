@@ -95,6 +95,22 @@ router.get('/tutor', (req, res)=>{
 
 });
 
+router.get('/student', (req, res)=>{
+
+    var username = req.query.username;
+
+    connection.query('SELECT * FROM studyhubdb.user WHERE studyhubdb.user.Username = ? AND studyhubdb.user.Usertype = "Student"', [username], (err, rows, fields)=>{
+        if(!err){
+            res.send(rows);
+            console.log(rows);
+        }
+        
+        else
+        console.log(err);
+    })
+
+
+});
 
 router.post('/', function(req, res) {
 
