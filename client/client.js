@@ -378,6 +378,7 @@ myModal.toggle()
 
 
 function generateResultTutorHTMLOutput(response, i){
+  console.log(response);
   var username = "'"+ response.Username + "'";
   return '<div class="response row"><div class="col-sm">'+
   '<img class="image" src="assets/card' + i + '.jpg">'+
@@ -385,8 +386,11 @@ function generateResultTutorHTMLOutput(response, i){
   '<div class="col-sm" id = ' + i.toString() + '>'+
   '<h4>Name: ' + response.Fname+ ' ' + response.Lname + '</h4>' + 
   '<h5>Username: '+ response.Username + '</h5>' +
+  '<p>Location: '+ response.City + ", " + response.Country + '</p>' +
   '<p>Major: '+ response.Major + '</p>' +
   '<p>Subject: '+ response.Subjectname + '</p>' +
+  '<p>Email: '+ response.Email + '</p>' +
+  '<p>Stars: '+ response.Avg_stars + '/5</p>' +
   '</div>'
   +'<div class="col-sm">'
   +'<button class="buttonSearch" data-bs-toggle="modal" data-bs-target="#bookingModal" onclick="getBookingTutor('+ username + ')">Book Now!</button>'
