@@ -57,6 +57,29 @@ router.post('/', function(req, res) {
  
  })
 
+
+ router.post('/approve', function(req, res) {
+
+    let t = req.body;
+
+
+
+    connection.query("UPDATE studyhubdb.timeslot SET studyhubdb.timeslot.IsApproved = '1' WHERE studyhubdb.timeslot.Sessionid = ?", [t.Sessionid], function(err, result, fields) {
+
+
+        if (!err) {
+
+            res.send(result);
+            } else {
+            console.log(err)
+            }
+
+    })
+
+
+ 
+ })
+
  router.post('/remove', function(req, res) {
 
     let t = req.body;

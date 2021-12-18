@@ -69,6 +69,31 @@ function verifyLogin(username, password) {
     
 }
 
+
+function approveTime(Sessionid) {
+  var data = JSON.stringify({
+    "Sessionid": Sessionid
+  });
+  
+  var config = {
+    method: 'post',
+    url: 'http://localhost:3000/timeslot/approve',
+    headers: { 
+      'Content-Type': 'application/json'
+    },
+    data : data
+  };
+  
+  axios(config)
+  .then(function (response) {
+    console.log(JSON.stringify(response.data));
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+}
+
+
 function removeBooking(Sessionid, type) {
 
 
