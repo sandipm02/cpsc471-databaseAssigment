@@ -1,3 +1,4 @@
+const e = require("express");
 
 function testing() {
     var resultElement = document.getElementById('getResult1');
@@ -128,6 +129,7 @@ function tutorRegistration(accredidation, major, grade, graddate, subject) {
 
   getLoggedUser()
   .then(data => {
+    
 
     var loc = window.location.pathname;
     var dir = loc.substring(0, loc.lastIndexOf('/'));
@@ -239,22 +241,20 @@ function generateHTMLLocations(location) {
 }
 
 
-function search() {
+function search(subject, accreditation, location, rating) {
 
-  var loc = window.location.pathname;
-  var dir = loc.substring(0, loc.lastIndexOf('/'));
-  
+  var locElement = document.getElementById('locationList');
+  locElement.innerHTML = '<option selected>Any Location</option>';
   
 
-  axios.get('http://localhost:3000/user/tutors')
+  const queryString = '/?subject=' + subject + '&accreditation=' + accreditation + '&location=' + location + '&rating=' + rating;
+  axios.get('http://localhost:3000/user/tutors' + queryString)
   .then(function(response){
-  
-    
 
     var resultElement = document.getElementById('resultsDiv');
     resultElement.innerHTML = '';
 
-
+    console.log(response.data)
     
     var i = 0;
     response.data.forEach(element => {
@@ -263,20 +263,19 @@ function search() {
       i += 1;
 
     });
+    
+  })
+  .catch(function(err){
+    console.log(err);
 
+  });
 
     
-    
-    
-
-
-})
-.catch(function(err){
-  console.log(err);
-
-});
+  
 
 }
+
+
 
 
 
@@ -288,6 +287,7 @@ function generateResultsHTMLOutput(response) {
 }
 
 function openModal(){
+  populateLocationList();
   var myModal = new bootstrap.Modal(document.getElementById('searchModal'), {})
 myModal.toggle()
 }

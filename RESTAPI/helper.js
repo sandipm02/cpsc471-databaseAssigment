@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyparser = require('body-parser');
 const connection = require('../connection')
+var SqlString = require('sqlstring');
 const fs = require('fs');
 
 const router = express.Router();
@@ -39,6 +40,21 @@ router.get('/checkLogin', function(req, res) {
 })
 
 
+router.get('/checkLogin', function(req, res) {
+
+   
+
+   connection.query('SELECT * FROM studyhubdb.user WHERE (Username = ? AND Pword = ?)', [username, password], function(err, result, fields) {
+      if (!err) {
+
+
+        res.send(result);
+      } else {
+         console.log(err)
+      }
+   })
+
+})
 
 
 

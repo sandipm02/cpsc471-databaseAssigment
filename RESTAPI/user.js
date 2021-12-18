@@ -3,6 +3,7 @@ const bodyparser = require('body-parser');
 const connection = require('../connection')
 const file = require('../client/localdata.json');
 const fs = require('fs');
+const SqlString = require('mysql/lib/protocol/SqlString');
 const router = express.Router();
 
 router.get('/', (req, res)=>{
@@ -19,7 +20,53 @@ router.get('/', (req, res)=>{
 
 router.get('/tutors', (req, res)=>{
 
-    connection.query('SELECT * FROM studyhubdb.user WHERE Usertype = "Tutor"', (err, rows, fields)=>{
+    var sqlsub = "";
+    var sqlacc = "";
+    var sqlloc = "";
+    var sqlrat = "";
+
+
+    var subject = req.query.subject;
+    var accreditation = req.query.accreditation;
+    var location = req.query.location;
+    var rating = req.query.rating;
+    console.log(rating)
+    console.log(subject)
+
+    var locString = location.toString();
+    
+
+    if (subject != "Any Subject") {
+        sqlsub = "JOIN studyhubdb.subject ON studyhubdb.subject.Subjectname = " + SqlString.escape(subject) +" AND studyhubdb.user.Username = studyhubdb.subject.Username ";
+    } else {
+        sqlsub = "JOIN studyhubdb.subject ON studyhubdb.user.Username = studyhubdb.subject.Username ";
+    }
+    if (accreditation != "Any Qualifications") {
+        sqlacc = "JOIN studyhubdb.qualification ON studyhubdb.qualification.Accreditation = " + SqlString.escape(accreditation) + " AND studyhubdb.user.Username = studyhubdb.qualification.Username ";
+    } else {
+        sqlacc = "JOIN studyhubdb.qualification ON studyhubdb.user.Username = studyhubdb.qualification.Username ";
+    }
+    
+    if (location != "Any Location") {
+        sqlloc = "JOIN studyhubdb.location ON studyhubdb.location.Id = " + SqlString.escape(locString) + " AND studyhubdb.user.Locationid = studyhubdb.location.Id ";
+    } else {
+        sqlloc = "JOIN studyhubdb.location ON studyhubdb.user.Locationid = studyhubdb.location.Id ";
+    }
+    if (rating != "Any Rating"){
+        var part = rating.split('.');
+        var ratingNo = part[0];
+        
+        sqlrat = "JOIN (SELECT studyhubdb.rating.T_username, COUNT(*) AS Total_ratings, AVG(Stars) AS Avg_stars FROM studyhubdb.rating GROUP BY studyhubdb.rating.T_username HAVING Avg_stars > " + SqlString.escape(ratingNo) + ") AS r"
+
+    } else {
+        sqlrat = "JOIN (SELECT studyhubdb.rating.T_username, COUNT(*) AS Total_ratings, AVG(Stars) AS Avg_stars FROM studyhubdb.rating GROUP BY studyhubdb.rating.T_username) AS r"
+    }
+
+    var sql = "SELECT * FROM studyhubdb.user " + sqlsub + sqlacc + sqlloc + sqlrat;
+
+    console.log(sql)
+
+    connection.query(sql, (err, rows, fields)=>{
         if(!err)
         res.send(rows);
         else
