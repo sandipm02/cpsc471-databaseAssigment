@@ -50,6 +50,7 @@ DROP TABLE IF EXISTS `qualification`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `qualification` (
   `Username` varchar(255) NOT NULL,
+  `Accreditation` varchar(255) DEFAULT NULL,
   `Major` varchar(255) DEFAULT NULL,
   `Graddate` varchar(255) DEFAULT NULL,
   `Gpa` int DEFAULT NULL,

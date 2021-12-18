@@ -6,7 +6,7 @@ body{
 #page{
     
     margin:20vh 20vw;
-    height: 65vh;
+    min-height: 65vh;
     background-color: white;
     border-radius: 3px;
     box-shadow: -1px 1px 4px 4px rgba(0,0,0,0.05);

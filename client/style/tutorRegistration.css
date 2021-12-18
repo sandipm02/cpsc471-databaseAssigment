@@ -5,24 +5,25 @@ body{
 
 #page{
     
-    margin:20vh 30vw;
-    min-height: 60vh;
+    margin:20vh 10vw;
+    min-height: 65vh;
     background-color: white;
     border-radius: 3px;
     box-shadow: -1px 1px 4px 4px rgba(0,0,0,0.05);
-    padding: 10vh 1vw;
+    padding: 10vh 5vw;
 }
-#page .form-group{
-    padding: 1vh 5vw;
-    text-align:center;
+
+.row{
+    margin-top: 5vh !important;
 }
-#page a{
-    color: #ff385c !important;
-    font-weight: 500 !important;
+p{
+    margin: 0 !important;
+    margin-top: 1vh !important;
 }
-#page a:hover{
-    color: #ff5f7c !important;
+i{
+    color: grey;
 }
+
 
 #page .btn-login {
     background-color: #ff385c !important;
@@ -34,7 +35,7 @@ body{
 #page .btn-login:hover{
     background-color: #ff5f7c !important;
 }
-#wrongInput{
-    color:red;
-    padding-left: 5vw;
+#page .form-group{
+    padding: 1vh 5vw;
+    text-align:center;
 }
