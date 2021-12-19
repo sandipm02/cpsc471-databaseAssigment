@@ -37,10 +37,6 @@ router.get('/tutors', (req, res)=>{
     var part = rating.split('.');
         var ratingNo = part[0];
 
-    console.log(ratingNo)
-    console.log(subject)
-    console.log(location)
-    console.log(accreditation)
 
     if (subject != "Any Subject") {
         sqlsub = "JOIN studyhubdb.subject ON studyhubdb.subject.Subjectname = " + SqlString.escape(subject) +" AND studyhubdb.user.Username = studyhubdb.subject.Username ";
@@ -69,7 +65,6 @@ router.get('/tutors', (req, res)=>{
 
     var sql = "SELECT DISTINCT * FROM studyhubdb.user " + sqlsub + sqlacc + sqlloc + sqlrat;
 
-    console.log(sql)
 
     connection.query(sql, (err, rows, fields)=>{
         if(!err)
