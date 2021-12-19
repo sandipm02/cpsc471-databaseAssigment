@@ -12,4 +12,4 @@ Open the index.html (or any other file) in the browser of your choice and the we
 
 # Packages
 
-The project uses node js, mysql, axios, mysqlstring, express, and body-parser
+The project uses node js, mysql, axios, mysqlstring, express, and body-parser.
